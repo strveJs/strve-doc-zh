@@ -35,13 +35,19 @@ export default {
 						text: '更新日志',
 						link: '/changeLog/',
 					},
-					// {
-					// 	text: '选择语言',
-					// 	items: [
-					// 		{ text: 'English', link: '/' },
-					// 		{ text: '简体中文', link: '/zh/' },
-					// 	],
-					// },
+					{
+						text: '选择语言',
+						items: [
+							{
+								text: 'English',
+								link: 'https://maomincoding.github.io/strve-doc/',
+							},
+							{
+								text: '简体中文',
+								link: 'https://maomincoding.github.io/strve-doc-zh/',
+							},
+						],
+					},
 				],
 				outlineTitle: '此页',
 				sidebar: [
