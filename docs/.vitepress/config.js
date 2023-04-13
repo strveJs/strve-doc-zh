@@ -29,11 +29,11 @@ export default {
 				nav: [
 					{
 						text: '演练场',
-						link: '/zh/playground/',
+						link: '/playground/',
 					},
 					{
 						text: '更新日志',
-						link: '/zh/changeLog/',
+						link: '/changeLog/',
 					},
 					// {
 					// 	text: '选择语言',

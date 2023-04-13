@@ -130,13 +130,13 @@ pnpm add strve-router
 
 ## 使用
 
-我们已经为您预装了项目配置，您可以使用[CreateStrveApp](/zh/tool/createStrveApp/)选择**strve-apps**模板。
+我们已经为您预装了项目配置，您可以使用[CreateStrveApp](/tool/createStrveApp/)选择**strve-apps**模板。
 
 ## API
 
 ### initRouter()
 
-第一个参数是一个数组对象，即需要注册的路由组件，`path`属性表示组件的路径，`template`属性是一个数组，第一项是导入的组件（按照[组件模式](/zh/essentials/usage/#组件模式))，第二项是渲染的组件函数的名称，比如下面的`render`。
+第一个参数是一个数组对象，即需要注册的路由组件，`path`属性表示组件的路径，`template`属性是一个数组，第一项是导入的组件（按照[组件模式](/essentials/usage/#组件模式))，第二项是渲染的组件函数的名称，比如下面的`render`。
 
 第二个参数需要传递给`setData` API，匹配到对应路径的页面会相应更新。 例如，在此处的路由器文件夹中创建一个 `index.js` 文件。
 

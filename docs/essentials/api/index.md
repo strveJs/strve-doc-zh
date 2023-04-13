@@ -90,9 +90,9 @@ function App() {
 
 | 特性 | 功能 |
 | --- | --- |
-| status | 标识字符串类型的特殊状态字段。 具体属性值请参考 [status](/zh/essentials/usage/#status) |
-| name | 函数组件的名称，类型为 `Function`（与`customElement`属性搭配使用时类型为`String`）， 直接传入一个函数组件，请参考 [命名功能组件](/zh/essentials/usage/#命名功能组件) |
-| customElement | 原生自定义组件对象，类型为Object。直接传入[defineCustomElement](/zh/essentials/api/#definecustomelement) 第一个参数即可。另外，需与`name='useCustomElement'`搭配使用，以便根据需要更新组件视图|
+| status | 标识字符串类型的特殊状态字段。 具体属性值请参考 [status](/essentials/usage/#status) |
+| name | 函数组件的名称，类型为 `Function`（与`customElement`属性搭配使用时类型为`String`）， 直接传入一个函数组件，请参考 [命名功能组件](/essentials/usage/#命名功能组件) |
+| customElement | 原生自定义组件对象，类型为Object。直接传入[defineCustomElement](/essentials/api/#definecustomelement) 第一个参数即可。另外，需与`name='useCustomElement'`搭配使用，以便根据需要更新组件视图|
 
 ## version
 

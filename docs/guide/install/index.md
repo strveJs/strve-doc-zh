@@ -95,8 +95,8 @@ app.mount('#app');
 
 目前有两款工具：
 
-1. [CreateStrveApp](/zh/tool/createStrveApp/)
-2. [CreateStrve](/zh/tool/createStrve/)
+1. [CreateStrveApp](/tool/createStrveApp/)
+2. [CreateStrve](/tool/createStrve/)
 
 ## 对不同构建版本的解释
 
