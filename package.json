@@ -1,9 +1,9 @@
 {
-	"name": "strve-doc",
+	"name": "strve-doc-zh",
 	"version": "5.1.1",
-	"description": "Strve.js document address",
+	"description": "StrveChineseDoc",
 	"main": "index.js",
-	"repository": "https://github.com/maomincoding/strve-doc.git",
+	"repository": "https://github.com/maomincoding/strve-doc-zh.git",
 	"author": "maomincoding",
 	"license": "MIT",
 	"private": false,

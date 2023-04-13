@@ -1,2 +1,3 @@
-# StrveDoc
-Strve.js document address.
+# StrveChineseDoc
+
+Strve.js Chinese document.
