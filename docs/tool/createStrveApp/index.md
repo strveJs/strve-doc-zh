@@ -33,3 +33,7 @@ pnpm create strve-app
 - strve-apps
 
 不仅包含了 Strve.js 的基本功能，还包含了 Strve Router，适用于跳转多个页面以及稍微复杂一些的应用。
+
+- strve-sfc
+
+适用于开发 Strve 单文件组件。
