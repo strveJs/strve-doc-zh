@@ -4,9 +4,7 @@ SFC (Single File Component) 又名单文件组件，是一种特殊的文件格�
 
 ## 安装
 
-我们提供了代码模板，可以快速搭建SFC项目。你只需要拉取项目代码即可，项目模板地址如下：
-
-> https://github.com/maomincoding/strve-sfc-template
+可以使用[createStrveApp](/tool/createStrveApp/)快速构建项目，选择`strve-sfc`模版即可。
 
 项目模板为其预装了[vite-plugin-strve](https://www.npmjs.com/package/vite-plugin-strve)，这是一款Vite插件，用于编译以`.strve`结尾的文件。
 
