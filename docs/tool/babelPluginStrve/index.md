@@ -20,7 +20,7 @@ h`<h1 $key>${state.count}</h1>`;
 
 ## 安装
 
-> [createStrve](/tool/createStrve/)、[createStrveApp](/tool/createStrveApp/)两款项目脚手架工具都已默认安装。
+> [createStrveApp](/tool/createStrveApp/) 项目脚手架工具已默认安装。
 
 ### npm
 
