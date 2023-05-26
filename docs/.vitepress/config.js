@@ -53,7 +53,7 @@ export default {
 				sidebar: [
 					{
 						text: '指导',
-						collapsible: true,
+						collapsible: false,
 						items: [
 							{
 								text: '介绍',
@@ -71,7 +71,7 @@ export default {
 					},
 					{
 						text: '要点',
-						collapsible: true,
+						collapsible: false,
 						items: [
 							{
 								text: 'API',
@@ -85,15 +85,11 @@ export default {
 					},
 					{
 						text: '工具',
-						collapsible: true,
+						collapsible: false,
 						items: [
 							{
 								text: 'CreateStrveApp',
 								link: '/tool/createStrveApp/',
-							},
-							{
-								text: 'CreateStrve',
-								link: '/tool/createStrve/',
 							},
 							{
 								text: 'StrveRouter',
@@ -103,11 +99,15 @@ export default {
 								text: 'BabelPluginStrve',
 								link: '/tool/babelPluginStrve/',
 							},
+							{
+								text: 'VitePluginStrve',
+								link: '/tool/vitePluginStrve/',
+							},
 						],
 					},
 					{
 						text: '其他',
-						collapsible: true,
+						collapsible: false,
 						items: [
 							{
 								text: 'SFC',

@@ -93,21 +93,18 @@ app.mount('#app');
 
 当你构建大型应用时，推荐使用 Strve.js 提供的官方项目脚手架来搭建项目。为单页面应用 (SPA) 快速搭建繁杂的脚手架。它为现代前端工作流提供了开箱即用的构建设置。
 
-目前有两款工具：
-
-1. [CreateStrveApp](/tool/createStrveApp/)
-2. [CreateStrve](/tool/createStrve/)
+> [CreateStrveApp](/tool/createStrveApp/)
 
 ## 对不同构建版本的解释
 
 在 NPM 包的 `dist/` 目录你将会找到很多不同的 Strve.js 构建版本。这里列出了它们之间的差别：
 
-|  | ES Module (基于构建工具使用) | ES Module (直接用于浏览器) | UMD |
-| --- | --- | --- | --- |
-| 完整版 | - | strve.full-esm.js | strve.full.js |
-| 完整版(生产环境) | - | strve.full-esm.prod.js | strve.full.prod.js |
-| 运行时版 | strve.runtime-esm.js | - | - |
-| 运行时版(生产环境) | strve.runtime-esm.prod.js | - | - |
+|                    | ES Module (基于构建工具使用) | ES Module (直接用于浏览器) | UMD                |
+| ------------------ | ---------------------------- | -------------------------- | ------------------ |
+| 完整版             | -                            | strve.full-esm.js          | strve.full.js      |
+| 完整版(生产环境)   | -                            | strve.full-esm.prod.js     | strve.full.prod.js |
+| 运行时版           | strve.runtime-esm.js         | -                          | -                  |
+| 运行时版(生产环境) | strve.runtime-esm.prod.js    | -                          | -                  |
 
 不同的版本：
 
