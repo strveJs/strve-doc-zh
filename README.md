@@ -1,3 +1,9 @@
-# StrveChineseDoc
+# StrveDocZh
 
-Strve.js Chinese document.
+Strve.js Chinese documentation.
+
+## English documentation
+
+If you want to see English documentation.
+
+[https://github.com/maomincoding/strve-doc](https://github.com/maomincoding/strve-doc)
