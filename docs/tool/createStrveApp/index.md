@@ -4,8 +4,22 @@
 
 ## 搭建您的第一个 Strve 项目
 
+**NPM**
+
 ```bash
-npm init strve-app
+npm create strve-app@latest
+```
+
+**Yarn**
+
+```bash
+yarn create strve-app
+```
+
+**PNPM**
+
+```bash
+pnpm create strve-app
 ```
 
 ## 选择一个模板
@@ -20,10 +34,10 @@ npm init strve-app
 
 不仅包含了 Strve.js 的基本功能，还包含了 Strve Router，适用于跳转多个页面以及稍微复杂一些的应用。
 
-- strve-sfc
+- strve-jsx
 
-适用于开发 Strve 单文件组件。
+使用 JSX 语法开发 Strve.js。
 
-- strve-sfc-apps
+- strve-jsx-apps
 
-Strve 单文件组件 + Strve Router。
+使用 JSX 语法开发 Strve.js + Strve Router，适用于跳转多个页面以及稍微复杂一些的应用。

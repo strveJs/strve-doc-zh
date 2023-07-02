@@ -15,11 +15,6 @@ export default {
   },
   themeConfig: {
     logo: "/logo.png",
-    // algolia: {
-    // 	apiKey: 'bfcdc868c58895106c405a8d1a765c09',
-    // 	indexName: 'strvejs',
-    // 	appId: 'OO7L0TPJ7C',
-    // },
     socialLinks: [
       { icon: "twitter", link: "https://twitter.com/maomincoding" },
       { icon: "github", link: "https://github.com/maomincoding/strve" },
@@ -96,8 +91,8 @@ export default {
                 link: "/tool/babelPluginStrve/",
               },
               {
-                text: "VitePluginStrve",
-                link: "/tool/vitePluginStrve/",
+                text: "BabelPluginJsxToStrve",
+                link: "/tool/babelPluginJsxToStrve/",
               },
             ],
           },
@@ -106,8 +101,8 @@ export default {
             collapsible: false,
             items: [
               {
-                text: "SFC",
-                link: "/other/sfc/",
+                text: "JSX 支持",
+                link: "/other/jsx/",
               },
               {
                 text: "适配",

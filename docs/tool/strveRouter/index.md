@@ -11,100 +11,100 @@ Strve Router 是 Strve.js 的官方路由管理器。 它与 Strve.js 的核心�
 ```html
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<title>strve-router</title>
-	</head>
+  <head>
+    <meta charset="UTF-8" />
+    <title>strve-router</title>
+  </head>
 
-	<body>
-		<div id="app"></div>
-		<script type="module">
-			import {
-				h,
-				createApp,
-				setData,
-			} from 'https://cdn.jsdelivr.net/npm/strve-js@5.1.1/dist/strve.full-esm.prod.js';
-			import {
-				initRouter,
-				linkTo,
-			} from 'https://cdn.jsdelivr.net/npm/strve-router@2.3.1/dist/strve-router.esm.js';
+  <body>
+    <div id="app"></div>
+    <script type="module">
+      import {
+        h,
+        createApp,
+        setData,
+      } from "https://cdn.jsdelivr.net/npm/strve-js@5.6.0/dist/strve.full-esm.prod.js";
+      import {
+        initRouter,
+        linkTo,
+      } from "https://cdn.jsdelivr.net/npm/strve-router@3.2.0/dist/strve-router.esm.js";
 
-			class Home {
-				constructor() {
-					this.state = {
-						count: 0,
-					};
-				}
+      class Home {
+        constructor() {
+          this.state = {
+            count: 0,
+          };
+        }
 
-				useAdd = () => {
-					setData(() => {
-						this.state.count++;
-					});
-				};
+        useAdd = () => {
+          setData(() => {
+            this.state.count++;
+          });
+        };
 
-				goAbout = () => {
-					linkTo('/about');
-				};
+        goAbout = () => {
+          linkTo("/about");
+        };
 
-				render = () => {
-					return h`
-                            <button onClick=${this.goAbout}>goAbout</button>
-                            <h1 onClick=${this.useAdd} $key>${this.state.count}</h1>
-                    `;
-				};
-			}
+        render = () => {
+          return h`
+                <button onClick=${this.goAbout}>goAbout</button>
+                <h1 onClick=${this.useAdd} $key>${this.state.count}</h1>
+          `;
+        };
+      }
 
-			class About {
-				constructor() {
-					this.state = {
-						msg: 'About',
-					};
-				}
+      class About {
+        constructor() {
+          this.state = {
+            msg: "About",
+          };
+        }
 
-				useChange = () => {
-					setData(() => {
-						this.state.msg = 'Changed';
-					});
-				};
+        useChange = () => {
+          setData(() => {
+            this.state.msg = "Changed";
+          });
+        };
 
-				goHome = () => {
-					linkTo('/');
-				};
+        goHome = () => {
+          linkTo("/");
+        };
 
-				render = () => {
-					return h`
-                            <button onClick=${this.goHome}>goHome</button>
-                            <h1 onClick=${this.useChange} $key>${this.state.msg}</h1>
-                    `;
-				};
-			}
+        render = () => {
+          return h`
+                <button onClick=${this.goHome}>goHome</button>
+                <h1 onClick=${this.useChange} $key>${this.state.msg}</h1>
+          `;
+        };
+      }
 
-			const router = initRouter(
-				[
-					{
-						path: '/',
-						template: [Home, 'render'],
-					},
-					{
-						path: '/about',
-						template: [About, 'render'],
-					},
-				],
-				setData
-			);
+      const router = initRouter(
+        [
+          {
+            path: "/",
+            template: [Home, "render"],
+          },
+          {
+            path: "/about",
+            template: [About, "render"],
+          },
+        ],
+        setData
+      );
 
-			function App() {
-				return h`
-                    <div class="main">
-                        ${router.view()}
-                    </div>
-                `;
-			}
+      function App() {
+        return h`
+				<div class="main">
+					${router.view()}
+				</div>
+        `;
+      }
 
-			const app = createApp(App);
-			app.mount('#app');
-		</script>
-	</body>
+      const app = createApp(App);
+      app.mount("#app");
+    </script>
+  </body>
 </html>
 ```
 
@@ -141,24 +141,24 @@ pnpm add strve-router
 第二个参数需要传递给`setData` API，匹配到对应路径的页面会相应更新。 例如，在此处的路由器文件夹中创建一个 `index.js` 文件。
 
 ```js
-import { setData } from 'strvejs';
-import { initRouter } from 'strve-router';
+import { setData } from "strvejs";
+import { initRouter } from "strve-router";
 
-import Home from '../template/home';
-import About from '../template/about';
+import Home from "../template/home";
+import About from "../template/about";
 
 const router = initRouter(
-	[
-		{
-			path: '/',
-			template: [Home, 'render'],
-		},
-		{
-			path: '/about',
-			template: [About, 'render'],
-		},
-	],
-	setData
+  [
+    {
+      path: "/",
+      template: [Home, "render"],
+    },
+    {
+      path: "/about",
+      template: [About, "render"],
+    },
+  ],
+  setData
 );
 
 export default router;
@@ -169,15 +169,15 @@ export default router;
 ```js
 // App.js
 
-import { h } from 'strvejs';
-import router from './router/index';
+import { h } from "strvejs";
+import router from "./router/index";
 
 export default function App() {
-	return h`
-			<div class='inner'>
-			${router.view()}
-			</div>
-    `;
+  return h`
+        <div class='inner'>
+        ${router.view()}
+        </div>
+  `;
 }
 ```
 
@@ -186,25 +186,25 @@ export default function App() {
 如果需要跳转到对应的页面，使用`linkTo()`方法，可以传递对应的路径和要传递的参数，也可以直接传递路径字符串。
 
 ```js
-import { h, setData } from 'strvejs';
-import { linkTo } from 'strve-router';
+import { h, setData } from "strvejs";
+import { linkTo } from "strve-router";
 
 export default class Home {
-	goAbout = () => {
-		linkTo({
-			path: '/about',
-			query: {
-				id: 1,
-				name: 'maomin',
-			},
-		});
-	};
+  goAbout = () => {
+    linkTo({
+      path: "/about",
+      query: {
+        id: 1,
+        name: "maomin",
+      },
+    });
+  };
 
-	render = () => {
-		return h`
-                <button onClick=${this.goAbout}>goAbout</button>
-        `;
-	};
+  render = () => {
+    return h`
+            <button onClick=${this.goAbout}>goAbout</button>
+    `;
+  };
 }
 ```
 
@@ -225,26 +225,26 @@ export default class Home {
 如果执行路由参数的操作，则要获取参数对象。 直接执行`toParse()`方法可以获取对象信息。
 
 ```js
-import { h, setData } from 'strvejs';
-import { linkTo, toParse } from 'strve-router';
+import { h, setData } from "strvejs";
+import { linkTo, toParse } from "strve-router";
 
 export default class About {
-	goHome = () => {
-		linkTo({
-			path: '/',
-		});
-	};
+  goHome = () => {
+    linkTo({
+      path: "/",
+    });
+  };
 
-	getOption = () => {
-		console.log(toParse());
-	};
+  getOption = () => {
+    console.log(toParse());
+  };
 
-	render = () => {
-		return h`
-                <button onClick="${this.goHome}">goHome</button>
-                <h1 onClick=${this.getOption}>About</h1>
-        `;
-	};
+  render = () => {
+    return h`
+          <button onClick="${this.goHome}">goHome</button>
+          <h1 onClick=${this.getOption}>About</h1>
+    `;
+  };
 }
 ```
 

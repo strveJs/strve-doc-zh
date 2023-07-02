@@ -1,6 +1,15 @@
 # 更新日志
 
-## v5.1.1 (Latest)
+版本号虽然取用的是 Strve.js 的版本号，但是内容不仅仅含有Strve.js更新的内容，还有同期的其他官方工具的更新内容。
+
+## v5.6.0 (Latest)
+
+- 优化`onMounted`、`nextTick` API；
+- 支持JSX语法；
+- 更新 [babel-plugin-strve](https://www.npmjs.com/package/babel-plugin-strve)，增加调用表达式模式；
+- 发布 [babel-plugin-jsx-to-strve](https://www.npmjs.com/package/babel-plugin-jsx-to-strve)，将 JSX 转换为与 Strve.js 一起使用的标记模板；
+
+## v5.1.1
 
 - 添加 Compile 模块；
 - 调整源代码仓库构建模块；

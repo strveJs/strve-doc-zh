@@ -4,9 +4,6 @@ layout: home
 hero:
   name: 可以将字符串转换成视图的JavaScript库
   tagline: 易用、快速、灵活的JavaScript框架
-  # image:
-  #   src: /logo.png
-  #   alt: Strve.js
   actions:
     - theme: brand
       text: 开始使用

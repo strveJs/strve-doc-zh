@@ -1,6 +1,6 @@
 # babelPluginStrve
 
-[babelPluginStrve](https://www.npmjs.com/package/babel-plugin-strve)是一款 babel 插件，将 HTML 模板字符串转化为 Virtual Dom。从之前的运行时转移到编译时，大幅度提高渲染性能。
+[babel-plugin-strve](https://www.npmjs.com/package/babel-plugin-strve)是一款 babel 插件，将 HTML 模板字符串转化为 Virtual Dom。从之前的运行时转移到编译时，大幅度提高渲染性能。
 
 ```js
 // input:
@@ -54,7 +54,7 @@ pnpm add babel-plugin-strve
 
 ### tag=h
 
-默认情况下，[babelPluginStrve](https://www.npmjs.com/package/babel-plugin-strve)将处理所有带有名为 `h` 的标记函数的标记模板。 要使用不同的名称，请在 `Babel` 配置中使用 `tag` 选项：
+默认情况下，[babel-plugin-strve](https://www.npmjs.com/package/babel-plugin-strve)将处理所有带有名为 `h` 的标记函数的标记模板。 要使用不同的名称，请在 `Babel` 配置中使用 `tag` 选项：
 
 ```json
 {
@@ -68,3 +68,18 @@ pnpm add babel-plugin-strve
 	]
 }
 ```
+
+## 其他模式
+
+默认会使用` h`` ` 这种标签模版的模式。如果有其他场景，可以选择调用表达式模式，有两种。
+
+1. 函数名称为`tem_h`，参数是模版字符串。
+```js
+tem_h(`<p>hello</p>`);
+```
+2. 函数名称为`str_h`，参数是普通字符串。
+```js
+str_h('<p>hello</p>');
+```
+
+> 不管是选择默认模式，还是调用表达式模式，它们最终输出结构都是相同的。另外，这些模式我们可以同时使用。
