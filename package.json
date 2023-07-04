@@ -1,19 +1,19 @@
 {
-	"name": "strve-doc-zh",
-	"version": "5.6.0",
-	"description": "StrveChineseDoc",
-	"main": "index.js",
-	"repository": "https://github.com/maomincoding/strve-doc-zh.git",
-	"author": "maomincoding",
-	"license": "MIT",
-	"private": false,
-	"scripts": {
-		"dev": "vitepress dev docs",
-		"build": "vitepress build docs",
-		"serve": "vitepress serve docs",
-		"sh": "bash deploy.sh"
-	},
-	"dependencies": {
-		"vitepress": "1.0.0-alpha.4"
-	}
+  "name": "strve-doc-zh",
+  "version": "5.6.1",
+  "description": "StrveChineseDoc",
+  "main": "index.js",
+  "repository": "https://github.com/maomincoding/strve-doc-zh.git",
+  "author": "maomincoding",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "dev": "vitepress dev docs",
+    "build": "vitepress build docs",
+    "serve": "vitepress serve docs",
+    "sh": "bash deploy.sh"
+  },
+  "dependencies": {
+    "vitepress": "1.0.0-alpha.4"
+  }
 }

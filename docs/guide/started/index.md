@@ -13,40 +13,40 @@ Strve.js 不仅易于使用，而且可以灵活地拆解不同的代码块。�
 ```html
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<title>Strve.js</title>
-	</head>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Strve.js</title>
+  </head>
 
-	<body>
-		<script type="module">
-			import {
-				h,
-				setData,
-				createApp,
-			} from 'https://cdn.jsdelivr.net/npm/strve-js@5.6.0/dist/strve.full-esm.js';
+  <body>
+    <script type="module">
+      import {
+        h,
+        setData,
+        createApp,
+      } from "https://cdn.jsdelivr.net/npm/strve-js@5.6.1/dist/strve.full-esm.js";
 
-			const state = {
-				count: 0,
-			};
+      const state = {
+        count: 0,
+      };
 
-			function add() {
-				setData(() => {
-					state.count++;
-				});
-			}
+      function add() {
+        setData(() => {
+          state.count++;
+        });
+      }
 
-			function App() {
-				return h`
+      function App() {
+        return h`
 						<h1 $key>${state.count}</h1>
 						<button onClick=${add}>Add</button>
 				`;
-			}
+      }
 
-			const app = createApp(App);
-			app.mount('#app');
-		</script>
-	</body>
+      const app = createApp(App);
+      app.mount("#app");
+    </script>
+  </body>
 </html>
 ```
 
@@ -57,35 +57,35 @@ Strve.js 不仅易于使用，而且可以灵活地拆解不同的代码块。�
 ```html
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<title>Strve.js</title>
-	</head>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Strve.js</title>
+  </head>
 
-	<body>
-		<script src="https://cdn.jsdelivr.net/npm/strve-js@5.6.0/dist/strve.full.prod.js"></script>
-		<script>
-			const { h, setData, createApp } = Strve;
-			const state = {
-				count: 0,
-			};
+  <body>
+    <script src="https://cdn.jsdelivr.net/npm/strve-js@5.6.1/dist/strve.full.prod.js"></script>
+    <script>
+      const { h, setData, createApp } = Strve;
+      const state = {
+        count: 0,
+      };
 
-			function add() {
-				setData(() => {
-					state.count++;
-				});
-			}
+      function add() {
+        setData(() => {
+          state.count++;
+        });
+      }
 
-			function App() {
-				return h`
+      function App() {
+        return h`
 						<h1 $key>${state.count}</h1>
 						<button onClick=${add}>Add</button>
 				`;
-			}
+      }
 
-			const app = createApp(App);
-			app.mount('#app');
-		</script>
-	</body>
+      const app = createApp(App);
+      app.mount("#app");
+    </script>
+  </body>
 </html>
 ```

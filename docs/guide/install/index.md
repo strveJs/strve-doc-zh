@@ -10,38 +10,38 @@
 
 ```html
 <script type="module">
-	import {
-		h,
-		setData,
-		createApp,
-	} from 'https://cdn.jsdelivr.net/npm/strve-js@5.6.0/dist/strve.full-esm.prod.js';
+  import {
+    h,
+    setData,
+    createApp,
+  } from "https://cdn.jsdelivr.net/npm/strve-js@5.6.1/dist/strve.full-esm.prod.js";
 
-	const state = {
-		count: 0,
-	};
+  const state = {
+    count: 0,
+  };
 
-	function add() {
-		setData(() => {
-			state.count++;
-		});
-	}
+  function add() {
+    setData(() => {
+      state.count++;
+    });
+  }
 
-	function App() {
-		return h`
+  function App() {
+    return h`
                 <h1 $key>${state.count}</h1>
                 <button onClick=${add}>Add</button>
 		`;
-	}
+  }
 
-	const app = createApp(App);
-	app.mount('#app');
+  const app = createApp(App);
+  app.mount("#app");
 </script>
 ```
 
 如果你觉得上述方法有点麻烦，为了更加方便，也可以直接在 `<script>` 标签中导入，直接使用。
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/strve-js@5.6.0/dist/strve.full.prod.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/strve-js@5.6.1/dist/strve.full.prod.js"></script>
 ```
 
 需要注意的是，这种方式你需要通过对象解构来使用相应的方法。
@@ -49,24 +49,24 @@
 ```js
 const { h, setData, createApp } = Strve;
 const state = {
-	count: 0,
+  count: 0,
 };
 
 function add() {
-	setData(() => {
-		state.count++;
-	});
+  setData(() => {
+    state.count++;
+  });
 }
 
 function App() {
-	return h`
+  return h`
 			<h1 $key>${state.count}</h1>
 			<button onClick=${add}>Add</button>
 	`;
 }
 
 const app = createApp(App);
-app.mount('#app');
+app.mount("#app");
 ```
 
 > 上面两种方式，默认都使用了生产版本，如果你想在开发环境获得更好的代码错误提示，那么可以用开发版本，只需要把文件后缀`*.prod.js`中`prod`字段删除即可。
