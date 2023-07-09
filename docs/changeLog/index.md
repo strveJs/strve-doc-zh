@@ -2,7 +2,7 @@
 
 版本号虽然取用的是 Strve.js 的版本号，但是内容不仅仅含有 Strve.js 更新的内容，还有同期的其他官方工具的更新内容。
 
-## v5.6.1 (Latest)
+## v5.6.2 (Latest)
 
 - 优化`onMounted`、`nextTick` API；
 - 支持 JSX 语法；
