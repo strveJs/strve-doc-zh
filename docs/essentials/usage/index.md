@@ -2,11 +2,7 @@
 
 ## 数据绑定
 
-Strve.js 使用基于 JavaScript 的模板字符串语法，允许开发人员以声明方式将 DOM 绑定到底层实例的数据。 所有 Strve.js 模板字符串都是有效的 HTML，因此可以被符合规范的浏览器和 HTML 解析器解析。
-
-在底层，Strve.js 将模板字符串编译成虚拟 DOM 渲染函数并最小化 DOM 操作。
-
-在 Strve.js 中，你可以随心所欲地使用 JavaScript 模板字符串，感受它的独特魅力！
+Strve 允许开发人员以声明方式将 DOM 绑定到底层实例的数据。
 
 ### 文本
 
@@ -18,9 +14,7 @@ const state = {
 };
 
 function App() {
-	return h`
-			<h1 $key>${state.msg}</h1>
-    `;
+	return html`<h1>${state.msg}</h1>`;
 }
 ```
 
@@ -35,9 +29,7 @@ const state = {
 };
 
 function App() {
-	return h`
-			<h1 $key>${state.a + state.b}</h1>
-    `;
+	return html`<h1>${state.a + state.b}</h1>`;
 }
 ```
 
@@ -51,13 +43,11 @@ const state = {
 };
 
 function App() {
-	return h`
-			<input type="text" value=${state.msg} $key/>
-    `;
+	return html`<input type="text" value=${state.msg}/>`;
 }
 ```
 
-此外，您还可以绑定其他属性，例如 `class`。
+此外，你还可以绑定其他属性，例如 `class`。
 
 ```js
 const state = {
@@ -66,9 +56,7 @@ const state = {
 };
 
 function App() {
-	return h`
-			<h1 class=${state.isRed ? 'red' : ''} $key>${state.msg}</h1>
-    `;
+	return html`<h1 class=${state.isRed ? 'red' : ''}>${state.msg}</h1>`;
 }
 ```
 
@@ -84,9 +72,7 @@ const state = {
 };
 
 function App() {
-	return h`
-			<p style="${state.style}">${state.msg}</p>
-    `;
+	return html`<p style=${state.style}>${state.msg}</p>`;
 }
 ```
 
@@ -106,22 +92,24 @@ function useShow() {
 }
 
 function App() {
-	return h`
-             <button onClick=${useShow}>show</button>
-             <div $key>
-                  ${
-					state.isShow
-					? h`<p $key>Strve.js</p>`
-					: h`<null $key></null>`
+	return html`
+			<fragment>
+				<button onClick=${useShow}>show</button>
+				<div>
+					${
+						state.isShow
+						? html`<p>Strve.js</p>`
+						: html`<null></null>`
 					}
-             </div>
+				</div>
+			 </fragment>
     `;
 }
 ```
 
 ## 列表渲染
 
-我们可以使用符号 `${}` 渲染基于数组的列表。 比如我们使用数组的`map`方法来渲染列表，我们可以动态添加数组项。
+使用符号 `${}` 渲染基于数组的列表，使用数组的`map`方法来返回一个数组。
 
 ```js
 const state = {
@@ -135,50 +123,26 @@ function usePush() {
 }
 
 function App() {
-	return h`
-             <button onClick=${usePush}>push</button>
-             <ul $key>
-               ${state.arr.map((todo) => h`<li>${todo}</li>`)}
-             </ul>
+	return html`
+			<fragment>
+				<button onClick=${usePush}>push</button>
+				<ul>
+				${state.arr.map((todo) => html`<li key=${todo}>${todo}</li>`)}
+				</ul>
+			</fragment>
     `;
 }
 ```
 
-使用列表渲染页面时，如果在列表头部插入数据，需要传入`useFirstKey`的值，避免重复渲染`DOM`节点，这是必须的。
-
-任何对链表头部进行操作的动作，比如`unshift`、`pop`数组方法，都需要加上这个`useFirstKey`值。 这对于其他操作不是必需的，并且已在内部进行了优化。
-
-```js
-const state = {
-	arr: [1, 2],
-};
-
-function useUnshift() {
-	setData(
-		() => {
-			state.arr.unshift('2');
-		},
-		{
-			status: 'useFirstKey',
-		}
-	);
-}
-
-function Home() {
-	return h`
-			<button onClick=${useUnshift}>unshift</button>
-			<ul $key>
-				${state.arr.map((item) => h`<li $key>${item}</li>`)}
-			</ul>
-    `;
-}
-```
+::: warning
+同一个父元素下的子元素必须具有唯一的 key。重复的 key 将会导致渲染异常。key 这个特殊的 attribute 主要作为 Vue 的虚拟 DOM 算法提示，在比较新旧节点列表时用于识别 vnode。
+:::
 
 ## 事件处理
 
 我们可以使用 `on` 指令来监听 DOM 事件并在事件触发时执行一些 JavaScript。 我们推荐使用这种驼峰式命名法，比如`onClick`。另外， `on` 指令可以缩写为`@`。
 
-此外，您需要使用符号 `${}` 来绑定事件。
+此外，你需要使用符号 `${}` 来绑定事件。
 
 ```js
 const state = {
@@ -190,48 +154,18 @@ function useClick() {
 }
 
 function App() {
-	return h`
-            <button onClick=${useClick}>${state.msg}</button>
-			<button @click=${useClick}>${state.msg}</button>
-    `;
-}
-```
-
-## Status
-
-### useFirstKey
-
-使用列表渲染时，在列表头部插入数据需要绑定`useFirstKey`字段，避免重复渲染`DOM`节点。
-
-```js
-const state = {
-	arr: [1, 2],
-};
-
-function useUnshift() {
-	setData(
-		() => {
-			state.arr.unshift('2');
-		},
-		{
-			status: 'useFirstKey',
-		}
-	);
-}
-
-function Home() {
-	return h`
-            <button onClick=${useUnshift}>unshift</button>
-            <ul $key>
-                ${state.arr.map((item) => h`<li $key>${item}</li>`)}
-            </ul>
+	return html`
+			<fragment>
+				<button onClick=${useClick}>${state.msg}</button>
+				<button @click=${useClick}>${state.msg}</button>
+			</fragment>
     `;
 }
 ```
 
 ## 命名功能组件
 
-我们更新组件数据时，不需要全量比较（比如下面的 h2、p 标签，它们不属于 Component1 的内容，所以不需要 Diff 比较），只需要更新组件中的数据即可。
+我们更新组件数据时，不需要全量比较（比如下面的 h2、p 标签，它们不属于 Component1 的内容，所以不需要 Diff ），只需要更新组件中的数据即可。
 
 这时候需要在`setData()`方法的第二个参数中传入一个对象，对象键为`name`，值为需要更新的函数组件。 另外，你还需要在父组件中，在函数组件外包裹一个`component`标签，并使用`$name`标签（静态标签的更多信息请看[静态标签](/essentials/usage/#静态标签)），该值为功能组件的名称。
 
@@ -252,57 +186,55 @@ function add1() {
 }
 
 function Component1() {
-	return h`
-            <h1>Component1</h1>
-            <h1 $key>${state1.count}</h1>
-            <button onClick=${add1}>add1</button> 
+	return html`
+			<fragment>
+				<h1>Component1</h1>
+				<h1>${state1.count}</h1>
+				<button onClick=${add1}>add1</button>
+			</fragment>
     `;
 }
 
 function App() {
-	return h`
-            <h2>txt1</h2>
-            <div>
-                <p>txt2</p>
-                <component $name=${Component1.name}>
-                    ${Component1()}
-                </component>
-            </div>
+	return html`
+			<fragment>
+				<h2>txt1</h2>
+				<div>
+					<p>txt2</p>
+					<component $name=${Component1.name}>
+						${Component1()}
+					</component>
+				</div>
+			</fragment>
     `;
 }
 ```
 
-## 静态标签
+## 内置属性
 
-### $key
+### $ref
 
-当我们更改数据时，内部会进行一次 Diff 比较以找出差异，然后相应地更新页面。 但是有些不需要更新的节点，比如下面的 `<button>` 和 `<h1>` 标签，是不需要比较的。 只有 `<p>` 标签等动态数据节点需要更新，所以我们显式地在标签中添加静态标签 `$key`。
+`$ref` 属性可以引用一个 DOM 元素。 它用于在组件或 DOM 元素中引用其他元素。
 
 ```js
-const state = {
-	count: 0,
-};
-
 function add() {
-	setData(() => {
-		state.count++;
-	});
+	console.log(domInfo.h1); // <h1>Strve.js</h1>
 }
 
 function App() {
-	return h`
-            <button onClick=${add}>add</button>
-            <p $key>${state.count}</p>
-            <h1>Hello Strve.js</h1>
+	return html`
+			<fragment>
+				<h1 $ref="h1">Strve.js</h1>
+				<button onClick=${add}>Add</button>
+			</fragment>
     `;
 }
-```
 
-另外，动态数据节点除了添加标签外，还需要注意在一些特殊场景下添加`$key`标签，比如动态添加节点、动态显示和隐藏节点等。 因为，只有标有 `$key` 的节点才能使用自己的 DOM 进行操作。
+```
 
 ### $name
 
-该标签需要用在内置标签`component`上，表示内部组件名称，必须与功能组件名称相同。
+该属性需要用在内置标签`component`上，表示内部组件名称，必须与功能组件名称相同。
 
 ```js
 const state1 = {
@@ -321,14 +253,16 @@ function add1() {
 }
 
 function Component1() {
-	return h`
-            <h1 $key>${state1.count}</h1>
-            <button onClick=${add1}>add1</button> 
+	return html`
+			<fragment>
+				<h1>${state1.count}</h1>
+				<button onClick=${add1}>add1</button>
+			</fragment>
     `;
 }
 
 function App() {
-	return h`
+	return html`
             <component $name=${Component1.name}>
                 ${Component1()}
             </component>
@@ -338,7 +272,7 @@ function App() {
 
 ### $props
 
-该标签与 [propsData](/essentials/api/#propsdata) 配合使用，例如需要在子组件中向父组件传递数据。
+该属性与 [propsData](/essentials/api/#propsdata) 配合使用，例如需要在子组件中向父组件传递数据。
 
 ```js
 // Son
@@ -351,9 +285,7 @@ function emitData() {
 }
 
 function Component1() {
-	return h`
-            <h1 onClick=${emitData}>Son</h1>
-    `;
+	return html`<h1 onClick=${emitData}>Son</h1>`;
 }
 ```
 
@@ -365,9 +297,9 @@ function useGetTit(v) {
 }
 
 function App() {
-	return h`
+	return html`
             <component $name=${Component1.name} $props=${useGetTit}>
-                ${Component1()}   
+                ${Component1()}
             </component>
     `;
 }
@@ -377,17 +309,15 @@ function App() {
 
 ### component
 
-一个组件标签，它在标签内包裹了一个功能组件。
+组件占位标签，它在标签内包裹了一个功能组件。
 
 ```js
 function Component1() {
-	return h`
-        <h1>Hello</h1>
-    `;
+	return html`<h1>Hello</h1>`;
 }
 
 function App() {
-	return h`
+	return html`
             <component $name=${Component1.name}>
                 ${Component1()}
             </component>
@@ -397,9 +327,7 @@ function App() {
 
 ### null
 
-空标签。 可以理解为占位符标签，不会渲染到页面中。
-
-通常用于条件渲染。
+占位符标签，不会渲染到页面中。
 
 ```js
 const state = {
@@ -413,15 +341,17 @@ function useShow() {
 }
 
 function App() {
-	return h`
-            <button onClick=${useShow}>show</button>
-            <div $key>
-                 ${
-					state.isShow
-					? h`<p $key>Strve.js</p>`
-					: h`<null $key></null>`
-				 }
-            </div>
+	return html`
+			<fragment>
+				<button onClick=${useShow}>show</button>
+				<div>
+					${
+						state.isShow
+						? html`<p>Strve.js</p>`
+						: html`<null></null>`
+					}
+				</div>
+			</fragment>
     `;
 }
 ```
@@ -437,9 +367,9 @@ const state = {
 };
 
 function App() {
-	return h`
+	return html`
             <fragment>
-                <h1 $key>Mouse position is at: ${state.x}, ${state.y}</h1>
+                <h1>Mouse position is at: ${state.x}, ${state.y}</h1>
             </fragment>
     `;
 }
@@ -474,9 +404,11 @@ class About {
 	};
 
 	render = () => {
-		return h`
-                <button onClick=${this.goHome}>goHome</button>
-                <h1 onClick=${this.useChange} $key>${this.state.msg}</h1>
+		return html`
+				<fragment>
+					<button onClick=${this.goHome}>goHome</button>
+					<h1 onClick=${this.useChange}>${this.state.msg}</h1>
+				</fragment>
         `;
 	};
 }
@@ -495,7 +427,7 @@ function About() {
 	}
 
 	function render() {
-		return h`<h1 onClick=${goHome} $key>${state.msg}</h1>`;
+		return html`<h1 onClick=${goHome}>${state.msg}</h1>`;
 	}
 
 	return {
@@ -528,10 +460,12 @@ home.goAbout = function () {
 };
 
 home.render = function () {
-	return h`
-            <button onClick=${home.goAbout}>GoAbout</button>
-            <h1 onClick=${home.useAdd} $key>${home.state.count}</h1>
-            <h2 $key>${home.state.msg}</h2>
+	return html`
+			<fragment>
+				<button onClick=${home.goAbout}>GoAbout</button>
+				<h1 onClick=${home.useAdd}>${home.state.count}</h1>
+				<h2>${home.state.msg}</h2>
+			</fragment>
     `;
 };
 ```
@@ -561,18 +495,18 @@ function changeCount() {
 const myCom2 = {
 	id: "myCom2",
 	template: () => {
-		return h`
-				<h2 $key @click="${changeCount}">${data.count}</h2>
-		`
+		return html`<h2 @click=${changeCount}>${data.count}</h2>`
 	},
 }
 
 defineCustomElement(myCom2, 'my-com2');
 
 function App() {
-	return h`
-			<h1>1</h1>
-			<my-com2></my-com2>
+	return html`
+			<fragment>
+				<h1>1</h1>
+				<my-com2></my-com2>
+			</fragment>
 	`
 }
 ```

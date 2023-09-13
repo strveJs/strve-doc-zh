@@ -1,20 +1,22 @@
 # 安装
 
-上一篇，我们简单快速地了解 Strve.js 的使用，那么我们在这一篇详细说明下 Strve.js 有哪些安装方法。
+上一篇，我们简单快速地了解 Strve 的使用，那么我们在这一篇详细说明下 Strve 有哪些安装方法。
 
 ## CDN
 
-如果你想使用 ES Modules。
+如果你想使用 ES 模块。
 
-> 如果直接在浏览器中打开了上面的 index.html，你会发现它抛出了一个错误，因为 ES 模块不能通过 `file://` 协议工作。为了使其工作，你需要使用本地 HTTP 服务器通过 `http://` 协议提供 index.html。
+::: info
+如果直接在浏览器中打开了上面的 index.html，你会发现它抛出了一个错误，因为 ES 模块不能通过 `file://` 协议工作。为了使其工作，你需要使用本地 HTTP 服务器通过 `http://` 协议提供 index.html。
+:::
 
 ```html
 <script type="module">
   import {
-    h,
+    html,
     setData,
     createApp,
-  } from "https://cdn.jsdelivr.net/npm/strve-js@5.6.2/dist/strve.full-esm.prod.js";
+  } from "https://cdn.jsdelivr.net/npm/strve-js@6.0.0/dist/strve.full-esm.prod.js";
 
   const state = {
     count: 0,
@@ -27,10 +29,7 @@
   }
 
   function App() {
-    return h`
-                <h1 $key>${state.count}</h1>
-                <button onClick=${add}>Add</button>
-		`;
+    return html`<h1>${state.count}</h1>`;
   }
 
   const app = createApp(App);
@@ -38,16 +37,16 @@
 </script>
 ```
 
-如果你觉得上述方法有点麻烦，为了更加方便，也可以直接在 `<script>` 标签中导入，直接使用。
-
-```html
-<script src="https://cdn.jsdelivr.net/npm/strve-js@5.6.2/dist/strve.full.prod.js"></script>
-```
+如果你觉得上述方法有点麻烦，为了更加方便，也可以直接在 `<script>` 标签中导入。
 
 需要注意的是，这种方式你需要通过对象解构来使用相应的方法。
 
-```js
-const { h, setData, createApp } = Strve;
+```html
+<script
+src="https://cdn.jsdelivr.net/npm/strve-js@6.0.0/dist/strve.full.prod.js"
+></script>
+<script>
+const { html, setData, createApp } = Strve;
 const state = {
   count: 0,
 };
@@ -59,41 +58,29 @@ function add() {
 }
 
 function App() {
-  return h`
-			<h1 $key>${state.count}</h1>
-			<button onClick=${add}>Add</button>
-	`;
+  return html`<h1>${state.count}</h1>`;
 }
 
 const app = createApp(App);
 app.mount("#app");
+</script>
 ```
 
-> 上面两种方式，默认都使用了生产版本，如果你想在开发环境获得更好的代码错误提示，那么可以用开发版本，只需要把文件后缀`*.prod.js`中`prod`字段删除即可。
+::: tip
+上面两种方式，默认都使用了生产版本，如果你想在开发环境获得更好的代码错误提示，那么可以用开发版本，只需要把文件后缀`*.prod.js`中`prod`字段删除即可。
+:::
 
 ## 包管理器
 
-在用 Strve.js 构建大型应用时推荐使用 包管理器 安装。
-
-使用您最喜欢的包管理器安装。
-
-### Npm
+在用 Strve 构建大型应用时，推荐使用包管理器安装。
 
 ```bash
 > npm install strve-js
 ```
 
-### Yarn
-
-```bash
-> yarn add strve-js
-```
-
 ## 命令行工具
 
-当你构建大型应用时，推荐使用 Strve.js 提供的官方项目脚手架来搭建项目。为单页面应用 (SPA) 快速搭建繁杂的脚手架。它为现代前端工作流提供了开箱即用的构建设置。
-
-> [CreateStrveApp](/tool/createStrveApp/)
+当你构建大型应用时，推荐使用 Strve 提供的官方项目脚手架 [CreateStrveApp](/tool/createStrveApp/) 来搭建项目。为单页面应用 (SPA) 快速搭建繁杂的脚手架。它为现代前端工作流提供了开箱即用的构建设置。
 
 ## 对不同构建版本的解释
 
@@ -108,5 +95,5 @@ app.mount("#app");
 
 不同的版本：
 
-1. 完整版本：包括编译器(用于将模板字符串编译为 JavaScript 呈现函数的代码)和运行时版本；
-2. 运行时版：用于创建实例、渲染和处理虚拟 DOM 的代码。基本上，它是从编译器中删除所有其他内容；
+- 完整版本：包括编译器(用于将模板字符串编译为 JavaScript 呈现函数的代码)和运行时版本；
+- 运行时版：用于创建实例、渲染和处理虚拟 DOM 的代码。基本上，它是从编译器中删除所有其他内容；

@@ -8,13 +8,11 @@
 
 - 详情：
 
-传入一个函数，也就是需要渲染的模板函数。 您可以在 `createApp` 之后链接其他应用程序 API。
+传入一个函数，也就是需要渲染的模板函数。
 
 ```js
 function App() {
-	return h`
-            <h1>Hello</h1>
-	`;
+	return html`<h1>Hello</h1>`;
 }
 
 createApp(App).mount('#app');
@@ -30,7 +28,7 @@ createApp(App).mount('#app');
 
 挂载根组件。 提供的 DOM 元素的 innerHTML 将替换为应用程序根组件的模板渲染。
 
-## h
+## html
 
 - 参数：
 
@@ -38,23 +36,21 @@ createApp(App).mount('#app');
 
 - 详情：
 
-` h`` `是一个标签函数，标签函数的语法是直接在函数名后跟一个模板字符串。 例如，您可以直接在模板字符串中编写 HTML 标记。
+` html`` `是一个标签函数，标签函数的语法是直接在函数名后跟一个模板字符串。 例如，你可以直接在模板字符串中编写HTML标签。
 
 ```js
 function App() {
-	return h`
-             <div class='inner'>
-                 <h1>Hello</h1>
-             </div>
+	return html`
+			<div class='inner'>
+				<h1>Hello</h1>
+			</div>
     `;
 }
 ```
 
-如果你使用的是 VSCode 编辑器，你可以去商店下载 [es6-string-html](https://marketplace.visualstudio.com/items?itemName=Tobermory.es6-string-html) 插件，然后 , 在 ` h`` ` 之间添加 `/*html*/`。
+如果你使用的是 VSCode 编辑器，你可以去商店下载 [es6-string-html](https://marketplace.visualstudio.com/items?itemName=Tobermory.es6-string-html) 插件，
+这个插件可以使 HTML 模板字符串高亮显示。
 
-就这样，在 VSCode 编辑器中，这个插件可以使 HTML 模板字符高亮。
-
-![](/code1.png)
 
 ## setData
 
@@ -79,10 +75,7 @@ function useChange() {
 }
 
 function App() {
-	return h`
-            <button onClick=${useChange}>change</button>
-            <p $key>${state.msg}</p>
-    `;
+	return html`<p onClick=${useChange}>${state.msg}</p>`;
 }
 ```
 
@@ -90,7 +83,6 @@ function App() {
 
 | 特性 | 功能 |
 | --- | --- |
-| status | 标识字符串类型的特殊状态字段。 具体属性值请参考 [status](/essentials/usage/#status) |
 | name | 函数组件的名称，类型为 `Function`（与`customElement`属性搭配使用时类型为`String`）， 直接传入一个函数组件，请参考 [命名功能组件](/essentials/usage/#命名功能组件) |
 | customElement | 原生自定义组件对象，类型为Object。直接传入[defineCustomElement](/essentials/api/#definecustomelement) 第一个参数即可。另外，需与`name='useCustomElement'`搭配使用，以便根据需要更新组件视图|
 
@@ -98,7 +90,7 @@ function App() {
 
 - 详情：
 
-直接获取 Strve.js 的版本号。
+直接获取 Strve 的版本号。
 
 ## onMounted
 
@@ -122,14 +114,11 @@ function add() {
 }
 
 function App() {
-	return h`
-            <h1 $key="h1">${state.count}</h1>
-            <button onClick=${add}>Add</button> 
-    `;
+	return html`<h1 $ref="h1" onClick=${add}>${state.count}</h1>`;
 }
 
 onMounted(() => {
-	console.log(domInfo.h1); // <button>Add</button>
+	console.log(domInfo.h1); // <h1>0</h1>
 });
 ```
 
@@ -144,38 +133,14 @@ onMounted(() => {
 生命周期钩子函数：当页面被销毁时调用。
 
 ```js
-class Home {
-	constructor() {
-		onUnmounted(() => {
-			console.log('onUnmounted'); // onUnmounted
-		});
-	}
-
-	goAbout = () => {
-		linkTo('/about');
-	};
-
-	render = () => h`
-            <button onClick=${this.goAbout}>goAbout</button>
-    `;
-}
-
-class About {
-	constructor() {
-		onMounted(() => {
-			console.log(document.querySelector('button'));
-		});
-	}
-
-	goHome = () => {
-		linkTo('/');
-	};
-
-	render = () => h`
-            <button onClick=${this.goHome}>goHome</button>
-    `;
-}
+onUnmounted(() => {
+	console.log('onUnmounted!');
+});
 ```
+
+::: tip
+一般与 StrveRouter 搭配使用。
+:::
 
 ## nextTick
 
@@ -205,9 +170,11 @@ function add() {
 }
 
 function App() {
-	return h`
-			<h1 $key="h1" style=${styleColor}>${state.count}</h1>
-			<button onClick=${add}>Add</button> 
+	return html`
+			<fragment>
+				<h1 $ref="h1" style=${styleColor}>${state.count}</h1>
+				<button onClick=${add}>Add</button>
+			</fragment>
     `;
 }
 ```
@@ -216,7 +183,7 @@ function App() {
 
 - 详情：
 
-它是一个 DOM 信息对象，你可以在 DOM 中的 `$key` 中定义一个属性。
+它是一个 DOM 信息对象，你可以在 DOM 中的 `$ref` 中定义一个属性。
 
 ```js
 function add() {
@@ -224,9 +191,11 @@ function add() {
 }
 
 function App() {
-	return h`
-            <h1 $key="h1">Strve.js</h1>
-            <button onClick=${add}>Add</button> 
+	return html`
+			<fragment>
+				<h1 $ref="h1">Strve.js</h1>
+				<button onClick=${add}>Add</button>
+			</fragment>
     `;
 }
 ```
@@ -253,13 +222,15 @@ function useGetTit(v) {
 }
 
 function App() {
-	return h`
-            <component $name=${Component1.name} $props=${useGetTit}>
-                ${Component1()}   
-            </component>
-            <component $name=${Component2.name}>
-                ${Component2()}   
-            </component>
+	return html`
+			<div>
+				<component $name=${Component1.name} $props=${useGetTit}>
+					${Component1()}
+				</component>
+				<component $name=${Component2.name}>
+					${Component2()}
+				</component>
+			</div>
     `;
 }
 ```
@@ -275,7 +246,7 @@ function emitData() {
 }
 
 function Component1() {
-	return h`
+	return html`
             <h1 onClick=${emitData}>Son</h1>
     `;
 }
@@ -299,11 +270,13 @@ function f() {
 }
 
 function Component2() {
-	return h`
-            <div $key>
-            ${v ? h`<p $key>${v}</p>` : h`<null></null>`}
-            </div>
-            <button onClick=${f}>btn</button>
+	return html`
+			<fragment>
+				<div>
+				${v ? html`<p>${v}</p>` : html`<null></null>`}
+				</div>
+				<button onClick=${f}>btn</button>
+			</fragment>
     `;
 }
 ```
@@ -341,9 +314,7 @@ const data = {
 const myCom1 = {
 	id: "myCom1",
 	template: () => {
-		return h`
-			   <p class="msg" $key>${data.count1}</p>
-		`
+		return html`<p class="msg">${data.count1}</p>`
 	},
 	styles: [`.msg { color: red; }`],
 }
@@ -351,9 +322,7 @@ const myCom1 = {
 defineCustomElement(myCom1, 'my-com1')
 
 function App() {
-	return h`
-			<my-com1></my-com1>
-	`
+	return html`<my-com1></my-com1>`
 }
 ```
 示例2：
@@ -361,9 +330,11 @@ function App() {
 const myCom1 = {
 	id: "myCom1",
 	template: (props) => {
-		return h`
-				<p class="msg" $key>${props.value}</p>
-				<p class="msg" $key>${props.msg}</p>
+		return html`
+				<fragment>
+					<p class="msg">${props.value}</p>
+					<p class="msg">${props.msg}</p>
+				</fragment>
 		`
 	},
 	styles: [`.msg { color: red; }`],
@@ -390,9 +361,11 @@ function add() {
 }
 
 function App() {
-	return h`
-			<button @click="${add}">btn</button>
-			<my-com1 value=${data.count1} msg="${data.count2}" $key></my-com1>
+	return html`
+			<fragment>
+				<button onClick=${add}>btn</button>
+				<my-com1 value=${data.count1} msg=${data.count2}></my-com1>
+			<fragment>
 	`
 }
 ```

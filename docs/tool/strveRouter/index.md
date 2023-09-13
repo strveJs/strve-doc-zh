@@ -1,12 +1,10 @@
 # strveRouter
 
-Strve Router 是 Strve.js 的官方路由管理器。 它与 Strve.js 的核心深度集成，轻松构建单页应用程序。
-
-目前仅支持 Hash 模式。
+Strve Router 是 Strve 的官方路由管理器。 它与 Strve 的核心深度集成，轻松构建单页应用程序。
 
 ## 开始
 
-尝试 Strve Router 的最简单方法是使用直接导入 CDN 链接。 您可以在浏览器中打开它并按照示例学习一些基本用法。
+尝试 Strve Router 的最简单方法是使用直接导入 CDN 链接。 你可以在浏览器中打开它并按照示例学习一些基本用法。
 
 ```html
 <!DOCTYPE html>
@@ -20,14 +18,14 @@ Strve Router 是 Strve.js 的官方路由管理器。 它与 Strve.js 的核心�
     <div id="app"></div>
     <script type="module">
       import {
-        h,
+        html,
         createApp,
         setData,
-      } from "https://cdn.jsdelivr.net/npm/strve-js@5.6.2/dist/strve.full-esm.prod.js";
+      } from "https://cdn.jsdelivr.net/npm/strve-js@6.0.0/dist/strve.full-esm.prod.js";
       import {
         initRouter,
         linkTo,
-      } from "https://cdn.jsdelivr.net/npm/strve-router@3.2.0/dist/strve-router.esm.js";
+      } from "https://cdn.jsdelivr.net/npm/strve-router@4.0.1/dist/strve-router.esm.js";
 
       class Home {
         constructor() {
@@ -47,9 +45,11 @@ Strve Router 是 Strve.js 的官方路由管理器。 它与 Strve.js 的核心�
         };
 
         render = () => {
-          return h`
-                <button onClick=${this.goAbout}>goAbout</button>
-                <h1 onClick=${this.useAdd} $key>${this.state.count}</h1>
+          return html`
+                  <fragment>
+                    <button onClick=${this.goAbout}>goAbout</button>
+                    <h1 onClick=${this.useAdd}>${this.state.count}</h1>
+                  </fragment>
           `;
         };
       }
@@ -72,9 +72,11 @@ Strve Router 是 Strve.js 的官方路由管理器。 它与 Strve.js 的核心�
         };
 
         render = () => {
-          return h`
-                <button onClick=${this.goHome}>goHome</button>
-                <h1 onClick=${this.useChange} $key>${this.state.msg}</h1>
+          return html`
+                  <fragment>
+                    <button onClick=${this.goHome}>goHome</button>
+                    <h1 onClick=${this.useChange}>${this.state.msg}</h1>
+                  </fragment>
           `;
         };
       }
@@ -94,11 +96,7 @@ Strve Router 是 Strve.js 的官方路由管理器。 它与 Strve.js 的核心�
       );
 
       function App() {
-        return h`
-				<div class="main">
-					${router.view()}
-				</div>
-        `;
+        return html`<div class="main">${router.view()}</div>`;
       }
 
       const app = createApp(App);
@@ -106,31 +104,18 @@ Strve Router 是 Strve.js 的官方路由管理器。 它与 Strve.js 的核心�
     </script>
   </body>
 </html>
+
 ```
 
 ## 安装
-
-### npm
 
 ```bash
 npm install strve-router
 ```
 
-### yarn
-
-```bash
-yarn add strve-router
-```
-
-### pnpm
-
-```bash
-pnpm add strve-router
-```
-
 ## 使用
 
-我们已经为您预装了项目配置，您可以使用[CreateStrveApp](/tool/createStrveApp/)选择**strve-apps**模板。
+你可以使用[CreateStrveApp](/tool/createStrveApp/)，选择 **strve-apps** 或者 **strve-jsx-apps** 模板。
 
 ## API
 
@@ -169,14 +154,14 @@ export default router;
 ```js
 // App.js
 
-import { h } from "strvejs";
+import { html } from "strvejs";
 import router from "./router/index";
 
 export default function App() {
-  return h`
-        <div class='inner'>
-        ${router.view()}
-        </div>
+  return html`
+          <div class='inner'>
+            ${router.view()}
+          </div>
   `;
 }
 ```
@@ -186,7 +171,7 @@ export default function App() {
 如果需要跳转到对应的页面，使用`linkTo()`方法，可以传递对应的路径和要传递的参数，也可以直接传递路径字符串。
 
 ```js
-import { h, setData } from "strvejs";
+import { html, setData } from "strvejs";
 import { linkTo } from "strve-router";
 
 export default class Home {
@@ -198,12 +183,12 @@ export default class Home {
         name: "maomin",
       },
     });
+
+    // linkTo("/about");
   };
 
   render = () => {
-    return h`
-            <button onClick=${this.goAbout}>goAbout</button>
-    `;
+    return html`<button onClick=${this.goAbout}>goAbout</button>`;
   };
 }
 ```
@@ -225,7 +210,7 @@ export default class Home {
 如果执行路由参数的操作，则要获取参数对象。 直接执行`toParse()`方法可以获取对象信息。
 
 ```js
-import { h, setData } from "strvejs";
+import { html, setData } from "strvejs";
 import { linkTo, toParse } from "strve-router";
 
 export default class About {
@@ -240,9 +225,11 @@ export default class About {
   };
 
   render = () => {
-    return h`
-          <button onClick="${this.goHome}">goHome</button>
-          <h1 onClick=${this.getOption}>About</h1>
+    return html`
+            <fragment>
+              <button onClick=${this.goHome}>goHome</button>
+              <h1 onClick=${this.getOption}>About</h1>
+            </fragment>
     `;
   };
 }
