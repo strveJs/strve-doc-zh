@@ -6,7 +6,7 @@
 
 如果你想使用 ES 模块。
 
-::: info
+::: warning
 如果直接在浏览器中打开了上面的 index.html，你会发现它抛出了一个错误，因为 ES 模块不能通过 `file://` 协议工作。为了使其工作，你需要使用本地 HTTP 服务器通过 `http://` 协议提供 index.html。
 :::
 
@@ -16,7 +16,7 @@
     html,
     setData,
     createApp,
-  } from "https://cdn.jsdelivr.net/npm/strve-js@6.0.0/dist/strve.full-esm.prod.js";
+  } from "https://cdn.jsdelivr.net/npm/strve-js@6.0.1/dist/strve.full-esm.prod.js";
 
   const state = {
     count: 0,
@@ -39,13 +39,13 @@
 
 如果你觉得上述方法有点麻烦，为了更加方便，也可以直接在 `<script>` 标签中导入。
 
-::: info
+::: warning
 需要注意的是，这种方式你需要通过对象解构来使用相应的方法。
 :::
 
 ```html
 <script
-src="https://cdn.jsdelivr.net/npm/strve-js@6.0.0/dist/strve.full.prod.js"
+src="https://cdn.jsdelivr.net/npm/strve-js@6.0.1/dist/strve.full.prod.js"
 ></script>
 <script>
 const { html, setData, createApp } = Strve;
