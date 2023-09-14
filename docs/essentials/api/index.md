@@ -47,10 +47,10 @@ function App() {
     `;
 }
 ```
-
+::: tip
 如果你使用的是 VSCode 编辑器，你可以去商店下载 [es6-string-html](https://marketplace.visualstudio.com/items?itemName=Tobermory.es6-string-html) 插件，
 这个插件可以使 HTML 模板字符串高亮显示。
-
+:::
 
 ## setData
 

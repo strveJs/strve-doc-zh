@@ -167,7 +167,7 @@ function App() {
 
 我们更新组件数据时，不需要全量比较（比如下面的 h2、p 标签，它们不属于 Component1 的内容，所以不需要 Diff ），只需要更新组件中的数据即可。
 
-这时候需要在`setData()`方法的第二个参数中传入一个对象，对象键为`name`，值为需要更新的函数组件。 另外，你还需要在父组件中，在函数组件外包裹一个`component`标签，并使用`$name`标签（静态标签的更多信息请看[静态标签](/essentials/usage/#静态标签)），该值为功能组件的名称。
+这时候需要在`setData()`方法的第二个参数中传入一个对象，对象键为`name`，值为需要更新的函数组件。 另外，你还需要在父组件中，在函数组件外包裹一个`component`标签，并使用`$name`内置属性（内置属性的更多信息请看[内置属性](/essentials/usage/#内置属性)），该值为功能组件的名称。
 
 ```js
 const state1 = {
@@ -476,7 +476,7 @@ home.render = function () {
 
 使用[`defineCustomElement`](/essentials/api/#definecustomelement)API 即可注册原生自定义元素。
 
-另外，需要注意一点，我们在更新内部自定义元素数据时，比如像下面这样，内部Virtual Dom不需要全量对比，可以使用`setData`API中`customElement`字段。
+另外，需要注意一点，我们在更新内部自定义元素数据时，比如像下面这样，内部 Virtual Dom 不需要全量对比，可以使用`setData`API中`customElement`字段。
 
 ```js
 const data = {
