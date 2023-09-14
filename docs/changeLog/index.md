@@ -2,7 +2,7 @@
 
 版本号虽然取用的是 Strve 的版本号，但是内容不仅仅含有 Strve 更新的内容，还有同期的其他官方工具的更新内容。
 
-## v6.0.1 (Latest)
+## v6.0.2 (Latest)
 
 - 删除 `useFirstKey`；
 - 增加 `key` 属性，`key` 这个特殊的 attribute 主要作为 Vue 的虚拟 DOM 算法提示，在比较新旧节点列表时用于识别 vnode。内部采用双端 Diff 算法，效率更高；

@@ -28,7 +28,7 @@ Strve 不仅易于使用，而且可以灵活地拆解不同的代码块。使�
         html,
         setData,
         createApp,
-      } from "https://cdn.jsdelivr.net/npm/strve-js@6.0.1/dist/strve.full-esm.js";
+      } from "https://cdn.jsdelivr.net/npm/strve-js@6.0.2/dist/strve.full-esm.js";
 
       const state = {
         count: 0,
@@ -64,7 +64,7 @@ Strve 不仅易于使用，而且可以灵活地拆解不同的代码块。使�
   </head>
 
   <body>
-    <script src="https://cdn.jsdelivr.net/npm/strve-js@6.0.1/dist/strve.full.prod.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/strve-js@6.0.2/dist/strve.full.prod.js"></script>
     <script>
       const { html, setData, createApp } = Strve;
       const state = {
