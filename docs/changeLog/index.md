@@ -10,10 +10,10 @@
 - 增加内置属性`$ref`；
 - 将API `h` 改为 `html`；
 - 根节点必须有且仅有一个，使用`<fragment></fragment>`标签；
-- 更新 [babel-plugin-strve](https://www.npmjs.com/package/babel-plugin-strve)，版本号：`2.0.0`；
-- 更新 [babel-plugin-jsx-to-strve](https://www.npmjs.com/package/babel-plugin-jsx-to-strve)，版本号：`2.0.0`；
-- 更新 [strve-router](https://www.npmjs.com/package/strve-router)，版本号：`4.0.1`；
-- 更新 [create-strve-app](https://www.npmjs.com/package/create-strve-app)，版本号：`5.9.1`；
+- 更新 [babel-plugin-strve](https://www.npmjs.com/package/babel-plugin-strve)；
+- 更新 [babel-plugin-jsx-to-strve](https://www.npmjs.com/package/babel-plugin-jsx-to-strve)；
+- 更新 [strve-router](https://www.npmjs.com/package/strve-router)；
+- 更新 [create-strve-app](https://www.npmjs.com/package/create-strve-app)；
 
 ## v5.6.2
 
