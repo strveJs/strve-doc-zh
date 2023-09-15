@@ -139,7 +139,7 @@ onUnmounted(() => {
 ```
 
 ::: tip
-一般与 StrveRouter 搭配使用。
+一般与[StrveRouter](/tool/strveRouter/) 搭配使用。
 :::
 
 ## nextTick
