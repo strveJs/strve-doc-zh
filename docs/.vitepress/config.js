@@ -9,7 +9,7 @@ export default {
     "/": {
       lang: "zh-CN",
       title: "Strve.js",
-      titleTemplate: "一个可以将字符串转换为视图的JS库",
+      titleTemplate: "易用、快速、灵活的 JavaScript 框架",
       description: "一个可以将字符串转换为视图的JS库",
     },
   },
@@ -22,10 +22,6 @@ export default {
     locales: {
       "/": {
         nav: [
-          {
-            text: "演练场",
-            link: "/playground/",
-          },
           {
             text: "更新日志",
             link: "/changeLog/",

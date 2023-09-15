@@ -4,19 +4,19 @@
 
 ## 搭建你的第一个 Strve 项目
 
-**NPM**
+**npm**
 
 ```bash
 npm create strve-app@latest
 ```
 
-**Yarn**
+**yarn**
 
 ```bash
 yarn create strve-app
 ```
 
-**PNPM**
+**pnpm**
 
 ```bash
 pnpm create strve-app

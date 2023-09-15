@@ -2,8 +2,10 @@
 layout: home
 
 hero:
-  name: 可以将字符串转换成视图的JavaScript库
-  tagline: 易用、快速、灵活的JavaScript框架
+  name: |
+    易用、快速、灵活的
+    JavaScript 框架
+  tagline: 一个可以将字符串转换为视图的 JavaScript 库
   actions:
     - theme: brand
       text: 开始使用
