@@ -3,7 +3,7 @@ layout: home
 
 hero:
   name: |
-    易用、快速、灵活的
+    易用性
     JavaScript 框架
   tagline: 一个可以将字符串转换为视图的 JavaScript 库
   actions:

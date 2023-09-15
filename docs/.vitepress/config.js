@@ -9,7 +9,7 @@ export default {
     "/": {
       lang: "zh-CN",
       title: "Strve.js",
-      titleTemplate: "易用、快速、灵活的 JavaScript 框架",
+      titleTemplate: "易用性 JavaScript 框架",
       description: "一个可以将字符串转换为视图的JS库",
     },
   },
