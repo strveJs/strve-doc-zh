@@ -135,7 +135,7 @@ function App() {
 ```
 
 ::: warning
-同一个父元素下的子元素必须具有唯一的 key。重复的 key 将会导致渲染异常。key 这个特殊的 attribute 主要作为 Vue 的虚拟 DOM 算法提示，在比较新旧节点列表时用于识别 vnode。
+同一个父元素下的子元素必须具有唯一的 key。重复的 key 将会导致渲染异常。key 这个特殊的 attribute 主要作为 Strve 的虚拟 DOM 算法提示，在比较新旧节点列表时用于识别 vnode。
 :::
 
 ## 事件处理
