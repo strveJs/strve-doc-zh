@@ -3,7 +3,10 @@
   "version": "6.0.2",
   "description": "StrveChineseDoc",
   "main": "index.js",
-  "repository": "https://github.com/maomincoding/strve-doc-zh.git",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/strveJs/strve-doc-zh"
+  },
   "author": "maomincoding",
   "license": "MIT",
   "private": false,
