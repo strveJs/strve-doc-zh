@@ -3,7 +3,7 @@ layout: home
 
 hero:
   name: |
-    一个平易近人、快速、灵活且轻量级的
+    一个易用、快速、灵活且轻量级的
     JavaScript 库
   tagline: 用于构建用户界面
   actions:
