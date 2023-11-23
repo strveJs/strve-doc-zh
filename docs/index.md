@@ -3,16 +3,16 @@ layout: home
 
 hero:
   name: |
-    易用性
-    JavaScript 框架
-  tagline: 一个可以将字符串转换为视图的 JavaScript 库
+    一个平易近人、快速、灵活且轻量级的
+    JavaScript 库
+  tagline: 用于构建用户界面
   actions:
     - theme: brand
       text: 开始使用
       link: /guide/started/
     - theme: alt
       text: 在 GitHub 上查看
-      link: https://github.com/maomincoding/strve
+      link: https://github.com/strveJs/strve
 features:
   - icon: 🔌
     title: 易用
