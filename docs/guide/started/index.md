@@ -1,8 +1,15 @@
 # 开始
 
-Strve 是一个可以将字符串转换为视图（用户界面）的 JavaScript 库。Strve 不仅易于使用，而且可以灵活地拆解不同的代码块。使用模板字符串开发用户界面，主要是利用 JavaScript 的能力，只关注 JavaScript 文件。
+Strve 是一个易用、快速、灵活且轻量级的 JavaScript 库，用于构建用户界面。基于 `tagged template` 的 HTML 模板引擎，利用 ES6 的模板字符串来进行模板的书写，利用浏览器的原生的能力进行模板渲染。
 
-尝试 Strve 的方法是在浏览器中打开它，并按照示例学习一些基本用法。
+- **易用：** 只要你对 HTML、CSS 和 JavaScript 已经基本熟悉，就可以直接上手。另外，我们可以声明式地描述最终输出的 HTML 和 JavaScript 状态之间的关系，开发者可以更加专注于业务逻辑的开发，不需要过多地关心DOM操作的细节。模板字符串来进行模板的书写，在一些场景中代码智能提示、代码格式化方面不是特别友好。所以，我们提供了新的一种编码方式，我们可以使用 JSX 语法编写 Strve，提升用户开发体验。
+
+- **快速：** 采用了虚拟DOM的模式，虚拟DOM使用diff算法的方法来计算出真正需要更新的节点，最大限度地减少了DOM操作以及DOM操作带来的排版与重绘损耗，从而显著提高了性能。
+
+- **灵活：** 一个函数就是一个组件，可以根据应用规模任意组合。另外，有无构建工具都可以使用。
+
+- **轻量级：** 压缩后的文件大小不足 **10k**。另外，可以根据不同应用场景，选择不同类型的文件。
+
 
 ## ES Modules
 
@@ -19,14 +26,13 @@ Strve 是一个可以将字符串转换为视图（用户界面）的 JavaScript
     <meta charset="UTF-8" />
     <title>Strve.js</title>
   </head>
-
   <body>
     <script type="module">
       import {
         html,
         setData,
         createApp,
-      } from "https://cdn.jsdelivr.net/npm/strve-js@6.0.2/dist/strve.full-esm.js";
+      } from "https://cdn.jsdelivr.net/npm/strve-js@6.2.0/dist/strve.full-esm.js";
 
       const state = {
         count: 0,
@@ -39,7 +45,7 @@ Strve 是一个可以将字符串转换为视图（用户界面）的 JavaScript
       }
 
       function App() {
-        return html`<h1 onClick=${add}>${state.count}</h1>`;
+        return html`<h1 onClick=${add}>${state.count}</h1>`
       }
 
       const app = createApp(App);
@@ -53,8 +59,8 @@ Strve 是一个可以将字符串转换为视图（用户界面）的 JavaScript
 
 你也可以选择使用 `<script>` 标签引入，这样就可以直接在浏览器中打开。
 
-::: warning
-需要注意的是，这种方式你需要通过对象解构来使用相应的方法。
+::: tip
+该版本的所有顶层 API 都以属性的形式暴露在了全局的 Strve 对象上。
 :::
 
 ```html
@@ -64,11 +70,11 @@ Strve 是一个可以将字符串转换为视图（用户界面）的 JavaScript
     <meta charset="UTF-8" />
     <title>Strve.js</title>
   </head>
-
   <body>
-    <script src="https://cdn.jsdelivr.net/npm/strve-js@6.0.2/dist/strve.full.prod.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/strve-js@6.2.0/dist/strve.full.prod.js"></script>
     <script>
       const { html, setData, createApp } = Strve;
+
       const state = {
         count: 0,
       };
@@ -80,7 +86,7 @@ Strve 是一个可以将字符串转换为视图（用户界面）的 JavaScript
       }
 
       function App() {
-       return html`<h1 onClick=${add}>${state.count}</h1>`;
+       return html`<h1 onClick=${add}>${state.count}</h1>`
       }
 
       const app = createApp(App);

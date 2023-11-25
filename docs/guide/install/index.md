@@ -16,7 +16,7 @@
     html,
     setData,
     createApp,
-  } from "https://cdn.jsdelivr.net/npm/strve-js@6.0.2/dist/strve.full-esm.prod.js";
+  } from "https://cdn.jsdelivr.net/npm/strve-js@6.2.0/dist/strve.full-esm.prod.js";
 
   const state = {
     count: 0,
@@ -29,7 +29,7 @@
   }
 
   function App() {
-    return html`<h1>${state.count}</h1>`;
+    return html`<h1>${state.count}</h1>`
   }
 
   const app = createApp(App);
@@ -37,18 +37,19 @@
 </script>
 ```
 
-如果你觉得上述方法有点麻烦，为了更加方便，也可以直接在 `<script>` 标签中导入。
+如果你觉得上述方式有点麻烦，也可以直接在 `<script>` 标签中导入。
 
-::: warning
-需要注意的是，这种方式你需要通过对象解构来使用相应的方法。
+::: tip
+该版本的所有顶层 API 都以属性的形式暴露在了全局的 Strve 对象上。
 :::
 
 ```html
 <script
-src="https://cdn.jsdelivr.net/npm/strve-js@6.0.2/dist/strve.full.prod.js"
+src="https://cdn.jsdelivr.net/npm/strve-js@6.2.0/dist/strve.full.prod.js"
 ></script>
 <script>
 const { html, setData, createApp } = Strve;
+
 const state = {
   count: 0,
 };
@@ -60,7 +61,7 @@ function add() {
 }
 
 function App() {
-  return html`<h1>${state.count}</h1>`;
+  return html`<h1>${state.count}</h1>`
 }
 
 const app = createApp(App);
@@ -69,7 +70,7 @@ app.mount("#app");
 ```
 
 ::: tip
-上面两种方式，默认都使用了生产版本，如果你想在开发环境获得更好的代码错误提示，那么可以用开发版本，只需要把文件后缀`*.prod.js`中`prod`字段删除即可。
+上面两种方式，默认都使用了生产版本。如果你想在开发中获得更精准的代码定位，那么可以用开发版本，只需要把文件后缀`*.prod.js`中`prod`字段删除即可。
 :::
 
 ## 包管理器
@@ -97,5 +98,6 @@ app.mount("#app");
 
 不同的版本：
 
-- 完整版本：包括编译器(用于将模板字符串编译为 JavaScript 呈现函数的代码)和运行时版本；
-- 运行时版：用于创建实例、渲染和处理虚拟 DOM 的代码。基本上，它是从编译器中删除所有其他内容；
+- **完整版本：** 包括编译器(用于将模板字符串编译为 JavaScript 呈现函数的代码)和运行时版本。
+
+- **运行时版：** 用于创建实例、渲染和处理虚拟 DOM 的代码。基本上，它是从编译器中删除所有其他内容。

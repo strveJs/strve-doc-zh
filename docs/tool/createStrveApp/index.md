@@ -2,7 +2,7 @@
 
 一套用于快速构建 Strve 项目的命令行工具。 CreateStrveApp 是使用 [Vite](https://vitejs.dev/) 构建的，这是一个新的前端构建工具，可以显着提升前端开发体验。
 
-## 搭建你的第一个 Strve 项目
+## 搭建你的第一个 Strve 应用
 
 **npm**
 
