@@ -207,7 +207,7 @@ onUnmounted(() => {
 
 ## nextTick
 
-- 参数
+- 参数:
 
   - `Function`
 
