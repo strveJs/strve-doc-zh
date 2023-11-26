@@ -8,14 +8,12 @@
 
 ## 学习 JSX 语法
 
-我们可以前往React官方文档 [https://zh-hans.react.dev/learn/writing-markup-with-jsx](https://zh-hans.react.dev/learn/writing-markup-with-jsx) 来进一步学习JSX语法。
+我们可以前往[React官方文档](https://zh-hans.react.dev/learn/writing-markup-with-jsx)来进一步学习JSX语法。
 
 ## 使用
 
 [CreateStrveApp](/tool/createStrveApp/) 项目脚手架工具已默认安装，选择`strve-jsx` 或者 `strve-jsx-apps` 模版即可。
 
-::: tip
-我们使用 [CreateStrveApp](/tool/createStrveApp/) 搭建完 Strve 项目会发现，同时安装了 [babelPluginStrve](/tool/babelPluginStrve/)、[babelPluginJsxToStrve](/tool/babelPluginJsxToStrve/)，这是因为我们需要使用 [babelPluginJsxToStrve](/tool/babelPluginJsxToStrve/) 将 JSX 转换为标签模版，之后再使用 [babelPluginStrve](/tool/babelPluginStrve/) 将标签模版转换为 Virtual DOM。
-:::
+我们使用 CreateStrveApp 搭建完 Strve 项目你会发现，同时安装了 BabelPluginStrve、BabelPluginJsxToStrve，这是因为我们需要使用 BabelPluginJsxToStrve 将 JSX 转换为标签模版，之后再使用 BabelPluginStrve 将标签模版转换为 Virtual DOM。
 
 

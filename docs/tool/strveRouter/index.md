@@ -8,8 +8,9 @@ Strve Router 是 Strve 的官方路由管理器。 它与 Strve 的核心深度�
 
 ## 开始
 
-我们根据示例学习一些简单用法。
+我们可以根据以下步骤来初步学习。
 
+**1. 创建home页面**
 ```jsx
 // home.jsx
 import { setData, onMounted } from 'strve-js';
@@ -63,7 +64,7 @@ export default function home() {
   ));
 }
 ```
-
+**2. 创建about页面**
 ```jsx
 // about.jsx
 import { linkTo, toParse } from 'strve-router';
@@ -89,7 +90,7 @@ export default function about() {
   ));
 }
 ```
-
+**3. 配置路由信息**
 ```js
 // router/index.js
 import { setData } from 'strve-js';
@@ -114,7 +115,7 @@ const router = initRouter(
 
 export default router;
 ```
-
+**4. 挂载页面**
 ```jsx
 // App.jsx
 import router from "./router/index";
@@ -243,4 +244,4 @@ function About() {
 
 ### routerVersion
 
-可以获取 Steve Router 的版本信息。
+可以获取 Strve Router 的版本信息。

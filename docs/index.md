@@ -4,7 +4,7 @@ layout: home
 hero:
   name: |
     一个易用、快速、灵活且轻量级的
-    JavaScript 库
+    JavaScript库
   tagline: 用于构建用户界面
   actions:
     - theme: brand
