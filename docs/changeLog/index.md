@@ -4,18 +4,16 @@
 版本号虽然取用的是 Strve 的版本号，但是内容不仅仅含有 Strve 更新的内容，还有同期的其他官方工具的更新内容。
 :::
 
-## v6.2.0 (Latest)
+## v6.2.6 (Latest)
 
 - 利用最长递增子序列优化Diff算法；
 - 增加具名组件用法，引入 "孤岛" 特性；
 - 事件处理取消`@`缩写；
-- 更改API`setData`；
-- 删除API`defineCustomElement`；
-- 更改API`domInfo`；
-- 删除API`propsData`；
-- 删除内置属性`$props`；
-- 增加API`createStateFlow`；
-- 增加API`registerComponent`；
+- 更改API`setData`、`domInfo`；
+- 删除API`defineCustomElement`、`propsData`；
+- 删除内置属性`$props`、`$name`；
+- 增加内置属性`$render`、`$id`；
+- 增加API`createStateFlow`、`registerComponent`；
 - 更新 [babel-plugin-strve](https://www.npmjs.com/package/babel-plugin-strve)；
 - 更新 [babel-plugin-jsx-to-strve](https://www.npmjs.com/package/babel-plugin-jsx-to-strve)；
 - 更新 [strve-router](https://www.npmjs.com/package/strve-router)；

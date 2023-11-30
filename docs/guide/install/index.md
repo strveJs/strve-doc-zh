@@ -19,7 +19,7 @@
     html,
     setData,
     createApp,
-  } from "https://cdn.jsdelivr.net/npm/strve-js@6.2.0/dist/strve.full-esm.prod.js";
+  } from "https://cdn.jsdelivr.net/npm/strve-js@6.2.6/dist/strve.full-esm.prod.js";
 
   const state = {
     count: 0,
@@ -48,7 +48,7 @@
 
 ```html
 <script
-src="https://cdn.jsdelivr.net/npm/strve-js@6.2.0/dist/strve.full.prod.js"
+src="https://cdn.jsdelivr.net/npm/strve-js@6.2.6/dist/strve.full.prod.js"
 ></script>
 <script>
 const { html, setData, createApp } = Strve;

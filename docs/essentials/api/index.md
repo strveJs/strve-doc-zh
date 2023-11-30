@@ -83,7 +83,7 @@ function App() {
 
 | Index | 功能 |
 | --- | --- |
-| 0 |第一个数组项是需要注册的组件名，必须唯一。  |
+| 0 |第一个数组项是需要注册的组件名。  |
 | 1 |第二个数组项是被渲染的页面模版方法名。 |
 
 
@@ -95,11 +95,9 @@ function App() {
 我们这里先简单介绍下，有一个宏观的了解。
 
 ```js
-const homeCom = registerComponent('homeCom');
-
 function Home() {
+  let [homeCom, render] = [registerComponent()];
   let count = 0;
-  let render;
 
   function add() {
     setData(() => {
@@ -108,32 +106,27 @@ function Home() {
   }
 
   return (render = () => (
-    <fragment>
+    <fragment $id={homeCom}>
       <button onClick={add}>Add</button>
       <h1>{count}</h1>
       <input value={count} />
     </fragment>
   ));
 }
+
 ```
 你可能已经有了些疑问，先别急，在后续的文档中我们会详细介绍每一个细节。
 
 ## registerComponent
 
-- 参数：
-
-  - `String`
-
 - 详情：
 
-注册组件名，参数为字段串，返回组件名。组件名必须唯一。
+注册组件名，返回唯一的组件名。
 
 ```jsx
-const homeCom = registerComponent('homeCom');
-
 function Home() {
+  let [homeCom, render] = [registerComponent()];
   let count = 0;
-  let render;
 
   function add() {
     setData(() => {
@@ -142,7 +135,7 @@ function Home() {
   }
 
   return (render = () => (
-    <fragment>
+    <fragment $id={homeCom}>
       <button onClick={add}>Add</button>
       <h1>{count}</h1>
       <input value={count} />

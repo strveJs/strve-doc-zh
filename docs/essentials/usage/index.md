@@ -169,45 +169,48 @@ Strve 应用程序是由 组件 组成的。一个组件是 UI（用户界面）
 在 Strve 中，组件就是一个函数。如果你给它唯一且具体的名字，那么它就被称为具名组件。
 
 ```jsx
-import { setData, registerComponent } from 'strve-js';
+function myComponent() {
+  let [MyCom, render] = [registerComponent()];
 
-export const MyComponent = registerComponent('MyComponent');
+  const state = {
+    count: 50,
+  };
 
-export function myComponent() {
-  let count = 1;
-  let render;
-
-  function add() {
+  function useChange() {
     setData(() => {
-      count++;
-    }, [MyComponent, render]);
+      state.count--;
+    }, [MyCom, render]);
   }
 
   return (render = () => (
-    <fragment>
-      <h1 onClick={add}>{count}</h1>
+    <fragment $id={MyCom}>
+      <h1 onClick={useChange}>{state.count}</h1>
     </fragment>
   ));
 }
 ```
-我们封装了一个`myComponent`组件，组件名为`MyComponent`，这个组件名应该是唯一的。那么，我们在哪里复用或者使用组件呢？
+我们封装了一个`myComponent`组件，组件名为`MyCom`。那么，我们在哪里复用或者使用组件呢？
 
 ```jsx
-import { createApp, setData } from 'strve-js';
-import { myComponent, MyComponent } from './myComponent';
-
-function App() {
+function Home() {
+  const state = {
+    msg: 'hello',
+  };
   let render;
+
+  function useChange() {
+    setData(() => {
+      state.msg = 'world';
+    });
+  }
 
   return (render = () => (
     <fragment>
-	  <h1>App</h1>
-      <component $name={myComponent}>{myComponent()()}</component>
+      <p onClick={useChange}>{state.msg}</p>
+      <component $render={myComponent}/>
     </fragment>
   ));
 }
-
-createApp(App()).mount('#main');
 ```
 
 Strve内部的渲染系统是基于虚拟DOM构建的，虚拟 DOM (Virtual DOM，简称 VDOM) 是一种编程概念，意为将目标所需的 UI 通过数据结构“虚拟”地表示出来，保存在内存中，然后利用Diff算法来比对新老数据，将真实的 DOM 与之保持同步。
@@ -244,34 +247,52 @@ function Home() {
 }
 ```
 
-### $name
+### $render
 
-该属性需要用在内置标签`component`上，表示内部组件名称。可以是对象或者数组。
+该属性需要用在内置标签`component`上，渲染组件。
 
 ```jsx
-import { myComponent, MyComponent } from './myComponent';
-
-function App() {
+function Home() {
+  const state = {
+    msg: 'hello',
+  };
   let render;
+
+  function useChange() {
+    setData(() => {
+      state.msg = 'world';
+    });
+  }
 
   return (render = () => (
     <fragment>
-	  <h1>App</h1>
-      <component $name={myComponent}>{myComponent()()}</component>
+      <p onClick={useChange}>{state.msg}</p>
+      <component $render={myComponent}/>
     </fragment>
   ));
 }
 ```
-```jsx
-import { myComponent, MyComponent, MyComponent1 } from './myComponent';
 
-function App() {
-  let render;
+### $id
+
+组件标识。
+
+```jsx
+function Home() {
+  let [homeCom, render] = [registerComponent()];
+  let count = 0;
+
+  function add() {
+    setData(() => {
+      count++;
+    }, [homeCom, render]);
+  }
 
   return (render = () => (
-    <fragment>
-	  <h1>App</h1>
-      <component $name={[myComponent,MyComponent1]}>{myComponent()()}</component>
+    <fragment $id={homeCom}>
+      <button onClick={add}>Add</button>
+      <h1>{count}</h1>
+      <input value={count} />
     </fragment>
   ));
 }
@@ -281,24 +302,28 @@ function App() {
 
 ### component
 
-组件占位标签，它在标签内包裹了一个组件。
+组件占位标签。
 
 ```jsx
-import { createApp, setData } from 'strve-js';
-import { myComponent, MyComponent } from './myComponent';
-
-function App() {
+function Home() {
+  const state = {
+    msg: 'hello',
+  };
   let render;
+
+  function useChange() {
+    setData(() => {
+      state.msg = 'world';
+    });
+  }
 
   return (render = () => (
     <fragment>
-	  <h1>App</h1>
-      <component $name={myComponent}>{myComponent()()}</component>
+      <p onClick={useChange}>{state.msg}</p>
+      <component $render={myComponent}/>
     </fragment>
   ));
 }
-
-createApp(App()).mount('#main');
 ```
 
 ### null
@@ -320,7 +345,7 @@ function App() {
   return (
     <fragment>
       <button onClick={useShow}>show</button>
-      <div>{state.isShow ? <p>Strve.js</p> : <null></null>}</div>
+      <div>{state.isShow ? <p>Strve</p> : <null></null>}</div>
     </fragment>
   );
 }
@@ -350,5 +375,4 @@ function App() {
     </fragment>
   );
 }
-
 ```

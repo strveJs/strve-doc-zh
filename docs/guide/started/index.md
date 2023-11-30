@@ -38,7 +38,7 @@ Strve 是一个易用、快速、灵活且轻量级的 JavaScript 库，用于�
         html,
         setData,
         createApp,
-      } from "https://cdn.jsdelivr.net/npm/strve-js@6.2.0/dist/strve.full-esm.js";
+      } from "https://cdn.jsdelivr.net/npm/strve-js@6.2.6/dist/strve.full-esm.js";
 
       const state = {
         count: 0,
@@ -77,7 +77,7 @@ Strve 是一个易用、快速、灵活且轻量级的 JavaScript 库，用于�
     <title>Strve.js</title>
   </head>
   <body>
-    <script src="https://cdn.jsdelivr.net/npm/strve-js@6.2.0/dist/strve.full.prod.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/strve-js@6.2.6/dist/strve.full.prod.js"></script>
     <script>
       const { html, setData, createApp } = Strve;
 
