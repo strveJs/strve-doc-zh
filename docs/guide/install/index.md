@@ -4,7 +4,6 @@
 上一篇，我们简单快速地了解 Strve 的使用，那么我们在这一篇详细说明下 Strve 有哪些安装方法。
 :::
 
-
 ## CDN
 
 如果你想使用 ES 模块。
@@ -19,7 +18,7 @@
     html,
     setData,
     createApp,
-  } from "https://cdn.jsdelivr.net/npm/strve-js@6.2.6/dist/strve.full-esm.prod.js";
+  } from 'https://cdn.jsdelivr.net/npm/strve-js@6.2.6/dist/strve.full-esm.prod.js';
 
   const state = {
     count: 0,
@@ -32,11 +31,11 @@
   }
 
   function App() {
-    return html`<h1>${state.count}</h1>`
+    return html`<h1>${state.count}</h1>`;
   }
 
   const app = createApp(App);
-  app.mount("#app");
+  app.mount('#app');
 </script>
 ```
 
@@ -47,28 +46,26 @@
 :::
 
 ```html
-<script
-src="https://cdn.jsdelivr.net/npm/strve-js@6.2.6/dist/strve.full.prod.js"
-></script>
+<script src="https://cdn.jsdelivr.net/npm/strve-js@6.2.6/dist/strve.full.prod.js"></script>
 <script>
-const { html, setData, createApp } = Strve;
+  const { html, setData, createApp } = Strve;
 
-const state = {
-  count: 0,
-};
+  const state = {
+    count: 0,
+  };
 
-function add() {
-  setData(() => {
-    state.count++;
-  });
-}
+  function add() {
+    setData(() => {
+      state.count++;
+    });
+  }
 
-function App() {
-  return html`<h1>${state.count}</h1>`
-}
+  function App() {
+    return html`<h1>${state.count}</h1>`;
+  }
 
-const app = createApp(App);
-app.mount("#app");
+  const app = createApp(App);
+  app.mount('#app');
 </script>
 ```
 

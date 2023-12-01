@@ -94,20 +94,16 @@ export default {
             collapsible: false,
             items: [
               {
-                text: 'JSX 支持',
-                link: '/other/jsx/',
-              },
-              {
                 text: '适配',
                 link: '/other/adapt/',
               },
               {
-                text: 'IDE 支持',
-                link: '/other/ide/',
+                text: 'JSX 支持',
+                link: '/other/jsx/',
               },
               {
-                text: 'UI 框架',
-                link: '/other/ui/',
+                text: 'IDE 支持',
+                link: '/other/ide/',
               },
               {
                 text: '浏览器兼容性',

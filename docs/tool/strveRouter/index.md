@@ -4,13 +4,14 @@
 为了更好的阅读体验，下面的代码示例都使用 JSX 语法编写。
 :::
 
-Strve Router 是 Strve 的官方路由管理器。 它与 Strve 的核心深度集成，轻松构建单页应用程序。
+StrveRouter 是 Strve 的官方路由管理器。 它与 Strve 的核心深度集成，轻松构建单页应用程序。
 
 ## 开始
 
 我们可以根据以下步骤来初步学习。
 
-**1. 创建home页面**
+**1. 创建 home 页面**
+
 ```jsx
 // home.jsx
 import { setData, onMounted } from 'strve-js';
@@ -64,7 +65,9 @@ export default function home() {
   ));
 }
 ```
-**2. 创建about页面**
+
+**2. 创建 about 页面**
+
 ```jsx
 // about.jsx
 import { linkTo, toParse } from 'strve-router';
@@ -90,7 +93,9 @@ export default function about() {
   ));
 }
 ```
+
 **3. 配置路由信息**
+
 ```js
 // router/index.js
 import { setData } from 'strve-js';
@@ -115,13 +120,15 @@ const router = initRouter(
 
 export default router;
 ```
+
 **4. 挂载页面**
+
 ```jsx
 // App.jsx
-import router from "./router/index";
-import "./styles/app.css";
+import router from './router/index';
+import './styles/app.css';
 
-export default () => <div class="inner">{router.view()}</div>;
+export default () => <div class='inner'>{router.view()}</div>;
 ```
 
 ## 安装
@@ -171,10 +178,10 @@ export default router;
 
 ```jsx
 // App.jsx
-import router from "./router/index";
-import "./styles/app.css";
+import router from './router/index';
+import './styles/app.css';
 
-export default () => <div class="inner">{router.view()}</div>;
+export default () => <div class='inner'>{router.view()}</div>;
 ```
 
 ### linkTo()
@@ -183,7 +190,6 @@ export default () => <div class="inner">{router.view()}</div>;
 
 ```jsx
 function Home() {
-
   function goAbout() {
     linkTo({
       path: '/about',
@@ -244,4 +250,4 @@ function About() {
 
 ### routerVersion
 
-可以获取 Strve Router 的版本信息。
+可以获取 StrveRouter 的版本信息。

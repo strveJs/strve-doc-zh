@@ -7,10 +7,10 @@
 ```bash
 npm install babel-plugin-jsx-to-strve
 ```
-::: tip
-[createStrveApp](/tool/createStrveApp/) 项目脚手架工具已默认安装，选择`strve-jsx` 或者 `strve-jsx-apps` 模版。
-:::
 
+::: tip
+[CreateStrveApp](/tool/createStrveApp/) 项目脚手架工具已默认安装，选择`strve-jsx` 或者 `strve-jsx-apps` 模版。
+:::
 
 ## 用法
 

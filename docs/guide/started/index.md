@@ -4,18 +4,17 @@ Strve 是一个易用、快速、灵活且轻量级的 JavaScript 库，用于�
 
 - **更容易上手：** 只要你对 HTML、CSS 和 JavaScript 已经基本熟悉，就可以直接上手。
 
-- **声明式渲染：** 我们可以声明式地描述最终输出的 HTML 和 JavaScript 状态之间的关系，开发者可以更加专注于业务逻辑的开发，不需要过多地关心DOM操作的细节。
+- **声明式渲染：** 我们可以声明式地描述最终输出的 HTML 和 JavaScript 状态之间的关系，开发者可以更加专注于业务逻辑的开发，不需要过多地关心 DOM 操作的细节。
 
 - **顺滑的用户体验：** 模板字符串来进行模板的书写，在一些场景中代码智能提示、代码格式化方面不是特别友好。所以，我们提供了新的一种编码方式，我们可以使用 JSX 语法编写 Strve，提升用户开发体验。
 
-- **性能出色：** 采用了虚拟DOM的模式，虚拟DOM使用diff算法的方法来计算出真正需要更新的节点，最大限度地减少了DOM操作以及DOM操作带来的排版与重绘损耗，从而显著提高了性能。另外，我们的JavaScript库在全球知名的[测评榜单](https://github.com/krausest/js-framework-benchmark)上赢得了优秀的成绩。
+- **性能出色：** 采用了虚拟 DOM 的模式，虚拟 DOM 使用 diff 算法的方法来计算出真正需要更新的节点，最大限度地减少了 DOM 操作以及 DOM 操作带来的排版与重绘损耗，从而显著提高了性能。另外，我们的 JavaScript 库在全球知名的[测评榜单](https://github.com/krausest/js-framework-benchmark)上赢得了优秀的成绩。
 
-- **组件化：** 一个函数就是一个组件，可以根据应用规模任意组合。并且具名组件特有的 **“孤岛特性”**，使得将虚拟DOM树计算的级别控制在组件级别。
+- **组件化：** 一个函数就是一个组件，可以根据应用规模任意组合。并且具名组件特有的 **“孤岛特性”**，使得将虚拟 DOM 树计算的级别控制在组件级别。
 
 - **灵活的应用场景：** 有无构建工具都可以使用，并且可以适配到其他前端框架开发的应用项目中去。
 
 - **轻量级：** 压缩后的文件大小不足 **10k**。另外，可以根据不同应用场景，选择[不同类型](https://www.jsdelivr.com/package/npm/strve-js?tab=files&path=dist)的文件。
-
 
 ## ES 模块
 
@@ -38,7 +37,7 @@ Strve 是一个易用、快速、灵活且轻量级的 JavaScript 库，用于�
         html,
         setData,
         createApp,
-      } from "https://cdn.jsdelivr.net/npm/strve-js@6.2.6/dist/strve.full-esm.js";
+      } from 'https://cdn.jsdelivr.net/npm/strve-js@6.2.6/dist/strve.full-esm.js';
 
       const state = {
         count: 0,
@@ -51,11 +50,11 @@ Strve 是一个易用、快速、灵活且轻量级的 JavaScript 库，用于�
       }
 
       function App() {
-        return html`<h1 onClick=${add}>${state.count}</h1>`
+        return html`<h1 onClick=${add}>${state.count}</h1>`;
       }
 
       const app = createApp(App);
-      app.mount("#app");
+      app.mount('#app');
     </script>
   </body>
 </html>
@@ -92,11 +91,11 @@ Strve 是一个易用、快速、灵活且轻量级的 JavaScript 库，用于�
       }
 
       function App() {
-       return html`<h1 onClick=${add}>${state.count}</h1>`
+        return html`<h1 onClick=${add}>${state.count}</h1>`;
       }
 
       const app = createApp(App);
-      app.mount("#app");
+      app.mount('#app');
     </script>
   </body>
 </html>

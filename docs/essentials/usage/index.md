@@ -10,8 +10,6 @@ Strve 允许开发人员以声明方式将 DOM 绑定到底层实例的数据。
 
 ### 文本
 
-数据绑定中文本绑定的形式是使用符号`{}`。
-
 ```jsx
 const state = {
 	msg: 'Hello',
@@ -24,65 +22,57 @@ function App() {
 
 ### 表达式
 
-使用符号 `{}` 中的表达式。
-
 ```jsx
 const state = {
-	a: 1,
-	b: 2,
+  a: 1,
+  b: 2,
 };
 
 function App() {
-	return <h1>{state.a + state.b}</h1>
+  return <h1>{state.a + state.b}</h1>;
 }
 ```
 
 ## 属性绑定
 
-使用符号 `{}` 将值绑定到属性 `value`。
-
 ```jsx
 const state = {
-	msg: 'Hello',
+  msg: 'Hello',
 };
 
 function App() {
-	return <input type="text" value=${state.msg}/>
+  return <input type='text' value={state.msg} />;
 }
 ```
 
-此外，你还可以绑定其他属性，例如 `class`。
-
 ```jsx
 const state = {
-	isRed: true,
-	msg: 'Hello',
+  isRed: true,
+  msg: 'Hello',
 };
 
 function App() {
-	return <h1 class={state.isRed ? 'red' : ''}>{state.msg}</h1>
+  return <h1 class={state.isRed ? 'red' : ''}>{state.msg}</h1>;
 }
 ```
 
-如果你想绑定 `style` 属性，你也可以。
-
 ```jsx
 const state = {
-	msg: 'Hello',
-	style: {
-		color: 'red',
-		fontSize: '40px',
-	},
+  msg: 'Hello',
+  style: {
+    color: 'red',
+    fontSize: '40px',
+  },
 };
 
 function App() {
-	return <p style={state.style}>{state.msg}</p>
+  return <p style={state.style}>{state.msg}</p>;
 }
 ```
 
 ## 条件渲染
 
-使用符号 `{}`，仅当指令的表达式返回 `true` 值时才会显示标签。
+仅当指令的表达式返回 `true` 值时才会显示标签。
 
 ```jsx
 const state = {
@@ -107,7 +97,7 @@ function App() {
 
 ## 列表渲染
 
-使用符号 `{}` 渲染基于数组的列表，使用数组的`map`方法来返回一个数组。
+渲染基于数组的列表，使用数组的`map`方法来返回一个数组。
 
 ```jsx
 const state = {
@@ -141,8 +131,6 @@ function App() {
 ## 事件处理
 
 我们可以使用 `on` 指令来监听 DOM 事件并在事件触发时执行一些 JavaScript。 我们推荐使用这种驼峰式命名法，比如`onClick`。
-
-此外，你需要使用符号 `{}` 来绑定事件。
 
 ```jsx
 const state = {
@@ -189,6 +177,7 @@ function myComponent() {
   ));
 }
 ```
+
 我们封装了一个`myComponent`组件，组件名为`MyCom`。那么，我们在哪里复用或者使用组件呢？
 
 ```jsx
@@ -207,18 +196,18 @@ function Home() {
   return (render = () => (
     <fragment>
       <p onClick={useChange}>{state.msg}</p>
-      <component $render={myComponent}/>
+      <component $render={myComponent} />
     </fragment>
   ));
 }
 ```
 
-Strve内部的渲染系统是基于虚拟DOM构建的，虚拟 DOM (Virtual DOM，简称 VDOM) 是一种编程概念，意为将目标所需的 UI 通过数据结构“虚拟”地表示出来，保存在内存中，然后利用Diff算法来比对新老数据，将真实的 DOM 与之保持同步。
+Strve 内部的渲染系统是基于虚拟 DOM 构建的，虚拟 DOM (Virtual DOM，简称 VDOM) 是一种编程概念，意为将目标所需的 UI 通过数据结构“虚拟”地表示出来，保存在内存中，然后利用 Diff 算法来比对新老数据，将真实的 DOM 与之保持同步。
 
-如何虚拟DOM树过于庞大，使得Diff计算时间大于16.6ms，那么就可能造成性能的卡顿。具名组件有一个特性就是 **”孤岛“**。何为“孤岛”，孤岛就是在 Strve 应用中我们可以理解成一个独立的模块。将一个庞大的虚拟DOM树分解成很多独立的模块，这样Diff计算时间就会控制在模块级别，大大缩减了计算的时间，提高了性能。
+如何虚拟 DOM 树过于庞大，使得 Diff 计算时间大于 16.6ms，那么就可能造成性能的卡顿。具名组件有一个特性就是 **”孤岛“**。何为“孤岛”，孤岛就是在 Strve 应用中我们可以理解成一个独立的模块。将一个庞大的虚拟 DOM 树分解成很多独立的模块，这样 Diff 计算时间就会控制在模块级别，大大缩减了计算的时间，提高了性能。
 
 ::: tip
-符合具名组件的编码规范，Strve内部将自动启动组件模块化精确更新。
+符合具名组件的编码规范，Strve 内部将自动启动组件模块化精确更新。
 :::
 
 ## 内置属性
@@ -267,7 +256,7 @@ function Home() {
   return (render = () => (
     <fragment>
       <p onClick={useChange}>{state.msg}</p>
-      <component $render={myComponent}/>
+      <component $render={myComponent} />
     </fragment>
   ));
 }
@@ -275,7 +264,11 @@ function Home() {
 
 ### $id
 
-组件标识。
+组件标识，属性值为注册的组件名。
+
+::: warning
+当我们使用具名组件时，必须在根节点处使用内置属性`$id`。
+:::
 
 ```jsx
 function Home() {
@@ -302,7 +295,7 @@ function Home() {
 
 ### component
 
-组件占位标签。
+组件标签，用于渲染组件。
 
 ```jsx
 function Home() {
@@ -320,7 +313,7 @@ function Home() {
   return (render = () => (
     <fragment>
       <p onClick={useChange}>{state.msg}</p>
-      <component $render={myComponent}/>
+      <component $render={myComponent} />
     </fragment>
   ));
 }
@@ -328,7 +321,7 @@ function Home() {
 
 ### null
 
-占位符标签，不会渲染到页面中。
+空标签，不会显示在页面中。
 
 ```jsx
 const state = {
@@ -356,7 +349,7 @@ function App() {
 创建一个文档片段标签。它不是真实 DOM 树的一部分，它的变化不会触发 DOM 树的重新渲染，且不会对性能产生影响。
 
 ::: warning
-根组件仅且只有一个，所以你会在文档中很多地方看到它被用作根组件。
+根组件仅且只有一个，所以你会在文档中很多地方看到它，被用作根组件。
 :::
 
 ```jsx
@@ -371,7 +364,7 @@ function App() {
       <h1>
         Mouse position is at: {state.x}, {state.y}
       </h1>
-	  <h2>Hello!</h2>
+      <h2>Hello!</h2>
     </fragment>
   );
 }

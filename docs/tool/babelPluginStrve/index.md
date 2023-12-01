@@ -7,8 +7,9 @@
 ```bash
 npm install babel-plugin-strve
 ```
+
 ::: tip
-[createStrveApp](/tool/createStrveApp/) 项目脚手架工具已默认安装。
+[CreateStrveApp](/tool/createStrveApp/) 项目脚手架工具已默认安装。
 :::
 
 ## 用法
@@ -17,7 +18,7 @@ npm install babel-plugin-strve
 
 ```json
 {
-	"plugins": [["babel-plugin-strve"]]
+  "plugins": [["babel-plugin-strve"]]
 }
 ```
 
@@ -29,14 +30,14 @@ npm install babel-plugin-strve
 
 ```json
 {
-	"plugins": [
-		[
-			"babel-plugin-strve",
-			{
-				"tag": "html"
-			}
-		]
-	]
+  "plugins": [
+    [
+      "babel-plugin-strve",
+      {
+        "tag": "html"
+      }
+    ]
+  ]
 }
 ```
 
@@ -45,10 +46,13 @@ npm install babel-plugin-strve
 默认会使用` html`` ` 这种标签模版的模式。如果有其他场景，可以选择调用表达式模式，有两种。
 
 - 函数名称为`tem_h`，参数是模版字符串。
+
 ```js
 tem_h(`<p>hello</p>`);
 ```
+
 - 函数名称为`str_h`，参数是普通字符串。
+
 ```js
 str_h('<p>hello</p>');
 ```

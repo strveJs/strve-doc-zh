@@ -32,7 +32,7 @@ pnpm create strve-app
 
 - strve-apps
 
-不仅包含了 Strve 的基本功能，还包含了 Strve Router，适用于跳转多个页面以及稍微复杂一些的应用。
+不仅包含了 Strve 的基本功能，还包含了 StrveRouter，适用于跳转多个页面以及稍微复杂一些的应用。
 
 - strve-jsx
 
@@ -40,4 +40,4 @@ pnpm create strve-app
 
 - strve-jsx-apps
 
-使用 JSX 语法开发 Strve + Strve Router，适用于跳转多个页面以及稍微复杂一些的应用。
+使用 JSX 语法开发 Strve + StrveRouter，适用于跳转多个页面以及稍微复杂一些的应用。

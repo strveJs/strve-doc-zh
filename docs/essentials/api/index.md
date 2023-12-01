@@ -16,7 +16,7 @@
 
 ```jsx
 function App() {
-	return <h1>Hello</h1>;
+  return <h1>Hello</h1>;
 }
 
 createApp(App).mount('#app');
@@ -40,13 +40,14 @@ createApp(App).mount('#app');
 
 - 详情：
 
-` html`` `是一个标签函数，标签函数的语法是直接在函数名后跟一个模板字符串。 例如，你可以直接在模板字符串中编写HTML标签。
+` html`` `是一个标签函数，标签函数的语法是直接在函数名后跟一个模板字符串。 例如，你可以直接在模板字符串中编写 HTML 标签。
 
 ```js
 function App() {
-	return html`<h1>Hello</h1>`
+  return html`<h1>Hello</h1>`;
 }
 ```
+
 ::: tip
 如果你使用的是 VSCode 编辑器，你可以去商店下载 [es6-string-html](https://marketplace.visualstudio.com/items?itemName=Tobermory.es6-string-html) 插件，
 这个插件可以使 HTML 模板字符串高亮显示。
@@ -65,32 +66,30 @@ function App() {
 
 ```jsx
 const state = {
-	msg: '1',
+  msg: '1',
 };
 
 function useChange() {
-	setData(() => {
-		state.msg = '2';
-	});
+  setData(() => {
+    state.msg = '2';
+  });
 }
 
 function App() {
-	return <p onClick={useChange}>{state.msg}</p>
+  return <p onClick={useChange}>{state.msg}</p>;
 }
 ```
 
-第二个参数（可选）为数组，数组长度为2。
+第二个参数（可选）为数组，数组长度为 2。
 
-| Index | 功能 |
-| --- | --- |
-| 0 |第一个数组项是需要注册的组件名。  |
-| 1 |第二个数组项是被渲染的页面模版方法名。 |
-
+| Index | 功能                                 |
+| ----- | ------------------------------------ |
+| 0     | 第一个数组项是需要注册的组件名       |
+| 1     | 第二个数组项是被渲染的页面模版方法名 |
 
 ::: tip
 当我们根据规范传入第二个参数时，就自动启动了具名组件的“孤岛特性”。
 :::
-
 
 我们这里先简单介绍下，有一个宏观的了解。
 
@@ -113,8 +112,8 @@ function Home() {
     </fragment>
   ));
 }
-
 ```
+
 你可能已经有了些疑问，先别急，在后续的文档中我们会详细介绍每一个细节。
 
 ## registerComponent
@@ -190,13 +189,9 @@ function Home() {
 
 ```js
 onUnmounted(() => {
-	console.log('onUnmounted!');
+  console.log('onUnmounted!');
 });
 ```
-
-::: tip
-一般与[StrveRouter](/tool/strveRouter/) 搭配使用。
-:::
 
 ## nextTick
 
@@ -274,11 +269,11 @@ function Home() {
 
 一个轻量级的状态管理器。通常方式是传入一个对象，对象属性包括`state`、`mutations`、`actions`。
 
-|属性|功能|
-|-|-|
-|state|存放数据|
-|mutations|同步更新数据|
-|actions|异步操作数据|
+| 属性      | 功能         |
+| --------- | ------------ |
+| state     | 存放数据     |
+| mutations | 同步更新数据 |
+| actions   | 异步操作数据 |
 
 下面我们简单举一个示例。
 
