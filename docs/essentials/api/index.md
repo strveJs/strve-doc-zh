@@ -93,7 +93,7 @@ function App() {
 
 我们这里先简单介绍下，有一个宏观的了解。
 
-```js
+```jsx
 function Home() {
   let [homeCom, render] = [registerComponent()];
   let count = 0;

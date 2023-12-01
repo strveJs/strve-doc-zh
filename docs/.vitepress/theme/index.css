@@ -122,5 +122,5 @@ html .dark {
 }
 
 .menu {
-  color: unset;
+  color: inherit !important;
 }
