@@ -87,6 +87,10 @@ export default {
                 text: 'BabelPluginJsxToStrve',
                 link: '/tool/babelPluginJsxToStrve/',
               },
+              {
+                text: 'StrveReactivity',
+                link: '/tool/strveReactivity/',
+              },
             ],
           },
           {
