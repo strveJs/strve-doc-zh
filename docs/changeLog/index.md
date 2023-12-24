@@ -14,6 +14,7 @@
 - 删除内置属性`$props`、`$name`；
 - 增加内置属性`$render`、`$id`；
 - 增加 API`createStateFlow`、`registerComponent`；
+- 发布 [strve-reactivity](https://www.npmjs.com/package/strve-reactivity)；
 - 更新 [babel-plugin-strve](https://www.npmjs.com/package/babel-plugin-strve)；
 - 更新 [babel-plugin-jsx-to-strve](https://www.npmjs.com/package/babel-plugin-jsx-to-strve)；
 - 更新 [strve-router](https://www.npmjs.com/package/strve-router)；
