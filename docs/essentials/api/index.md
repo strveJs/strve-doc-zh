@@ -4,48 +4,133 @@
 为了更好的阅读体验，下面的代码示例，除了`html` API 使用标签模版编写， 其他都使用 JSX 语法编写。
 :::
 
-## createApp
+## defineComponent
 
-- 参数：
+定义组件。
 
-  - `Function`
+第一个参数为配置对象，可传。其配置属性为`mount`, 该配置属性用于挂载根组件。接收一个“容器”参数，可以是一个实际的 DOM 元素或是一个 CSS 选择器字符串。
 
-- 详情：
-
-传入一个函数，也就是需要渲染的模板函数。
+第二个参数为函数，必传。返回 HTML 模版。函数的参数为一个对象，对象的属性分别为`content`、`setData`。
 
 ```jsx
-function App() {
-  return <h1>Hello</h1>;
-}
-
-createApp(App).mount('#app');
+defineComponent(
+  {
+    mount: '#app',
+  },
+  () => {
+    return () => (
+      <div>
+        <h1>Hello Strve</h1>
+      </div>
+    );
+  }
+);
 ```
 
-### mount
+其中，我们可以利用`content`给组件定义数据，并且在你需要的时候使用它。
 
-- 参数：
+```jsx
+const app = defineComponent(({ setData, content }) => {
+  content.data = {
+    name: 'Strve',
+  };
 
-  - `HTMLElement | String`
+  return () => (
+    <div>
+      <h1>Hello Strve</h1>
+    </div>
+  );
+});
 
-- 详情：
+console.log(app.data); // {name:'Strve'}
+```
 
-挂载根组件。该方法接收一个“容器”参数，可以是一个实际的 DOM 元素或是一个 CSS 选择器字符串。
+## setData
+
+修改页面数据。
+
+第一个参数为函数，必传。执行回调函数，进而修改关联的页面数据。
+第二个参数为上下文环境，在外部作用域必传，在内部作用域不传。
+
+**内部作用域：**
+
+```jsx
+defineComponent(({ setData }) => {
+  let count = 0;
+
+  function add() {
+    setData(() => {
+      count++;
+    });
+  }
+
+  return () => (
+    <fragment>
+      <button onClick={add}>Add</button>
+      <h1>{count}</h1>
+    </fragment>
+  );
+});
+```
+
+**外部作用域：**
+
+```jsx
+import { defineComponent, setData } from 'strve-js';
+
+let count = 0;
+
+const app = defineComponent(() => {
+  return () => (
+    <fragment>
+      <button onClick={add}>Add</button>
+      <h1>{count}</h1>
+    </fragment>
+  );
+});
+
+function add() {
+  setData(() => {
+    count++;
+  }, app);
+}
+```
+
+## domInfo
+
+获取 DOM 信息。可以在 DOM 中的使用内置属性`$ref` 中来定义。
+
+```jsx
+defineComponent(({ setData }) => {
+  let count = 1;
+  function view() {
+    setData(() => {
+      count++;
+    });
+    console.log(domInfo.h1Ref); // <h1>2</h1>
+  }
+
+  return () => (
+    <fragment>
+      <button onClick={view}>Btn</button>
+      <h1 $ref='h1Ref'>{count}</h1>
+    </fragment>
+  );
+});
+```
 
 ## html
 
-- 参数：
-
-  - `Function`
-
-- 详情：
-
 ` html`` `是一个标签函数，标签函数的语法是直接在函数名后跟一个模板字符串。 例如，你可以直接在模板字符串中编写 HTML 标签。
 
+在 JSX 语法环境下，不会用到此 API。
+
 ```js
-function App() {
-  return html`<h1>Hello</h1>`;
-}
+defineComponent(() => {
+  let count = 0;
+
+  return () => html`<p>${count}</p>`;
+});
 ```
 
 ::: tip
@@ -53,219 +138,7 @@ function App() {
 这个插件可以使 HTML 模板字符串高亮显示。
 :::
 
-## setData
-
-- 参数：
-
-  - `Function`
-  - `Array` (可选)
-
-- 详情：
-
-第一个参数是一个函数。 函数体需要执行会改变页面状态的值，比如下面例子中的`state.msg`。
-
-```jsx
-const state = {
-  msg: '1',
-};
-
-function useChange() {
-  setData(() => {
-    state.msg = '2';
-  });
-}
-
-function App() {
-  return <p onClick={useChange}>{state.msg}</p>;
-}
-```
-
-第二个参数（可选）为数组，数组长度为 2。
-
-| Index | 功能                                 |
-| ----- | ------------------------------------ |
-| 0     | 第一个数组项是需要注册的组件名       |
-| 1     | 第二个数组项是被渲染的页面模版方法名 |
-
-::: tip
-当我们根据规范传入第二个参数时，就自动启动了具名组件的“孤岛特性”。
-:::
-
-我们这里先简单介绍下，有一个宏观的了解。
-
-```jsx
-function Home() {
-  let [homeCom, render] = [registerComponent()];
-  let count = 0;
-
-  function add() {
-    setData(() => {
-      count++;
-    }, [homeCom, render]);
-  }
-
-  return (render = () => (
-    <fragment $id={homeCom}>
-      <button onClick={add}>Add</button>
-      <h1>{count}</h1>
-      <input value={count} />
-    </fragment>
-  ));
-}
-```
-
-你可能已经有了些疑问，先别急，在后续的文档中我们会详细介绍每一个细节。
-
-## registerComponent
-
-- 详情：
-
-注册组件名，返回唯一的组件名。
-
-```jsx
-function Home() {
-  let [homeCom, render] = [registerComponent()];
-  let count = 0;
-
-  function add() {
-    setData(() => {
-      count++;
-    }, [homeCom, render]);
-  }
-
-  return (render = () => (
-    <fragment $id={homeCom}>
-      <button onClick={add}>Add</button>
-      <h1>{count}</h1>
-      <input value={count} />
-    </fragment>
-  ));
-}
-```
-
-## onMounted
-
-- 参数：
-
-  - `Function`
-
-- 详情：
-
-生命周期钩子函数：节点挂载完成时触发。
-
-```jsx
-function Home() {
-  let count = 0;
-  let render;
-
-  onMounted(() => {
-    console.log('HOME mount');
-  });
-
-  function add() {
-    setData(() => {
-      count++;
-    });
-  }
-
-  return (render = () => (
-    <fragment>
-      <button onClick={add}>Add</button>
-      <h1>{count}</h1>
-    </fragment>
-  ));
-}
-```
-
-## onUnmounted
-
-- 参数：
-
-  - `Function`
-
-- 详情：
-
-生命周期钩子函数：当页面被销毁时调用。
-
-```js
-onUnmounted(() => {
-  console.log('onUnmounted!');
-});
-```
-
-## nextTick
-
-- 参数:
-
-  - `Function`
-
-- 详情：
-
-在更改一些数据后立即使用它以等待 DOM 更新。
-
-```jsx
-function Home() {
-  let count = 0;
-  const h1Ref = Object.create(null);
-  let styleColor = 'color:red';
-  let render;
-
-  function add() {
-    setData(() => {
-      count++;
-      styleColor = 'color:green';
-      nextTick(() => {
-        console.log(domInfo.get(h1Ref)); // <h1 style="color:green">1</h1>
-      });
-    });
-  }
-
-  return (render = () => (
-    <fragment>
-      <button onClick={add}>Add</button>
-      <h1 $ref={h1Ref} style={styleColor}>
-        {count}
-      </h1>
-    </fragment>
-  ));
-}
-```
-
-## domInfo
-
-- 详情：
-
-可以获取 DOM 信息，返回 `WeakMap` 对象。可以在 DOM 中的使用 `$ref` 中定义一个属性，这个属性值必须是一个引用类型，通常为`Object.create(null)`。
-
-```jsx
-function Home() {
-  const h1Ref = Object.create(null);
-  let render;
-
-  function view() {
-    nextTick(() => {
-      console.log(domInfo.get(h1Ref)); // <h1>1</h1>
-    });
-  }
-
-  return (render = () => (
-    <fragment>
-      <button onClick={view}>Btn</button>
-      <h1 $ref={h1Ref}>1</h1>
-    </fragment>
-  ));
-}
-```
-
-## version
-
-- 详情：
-
-直接获取 Strve 的版本号。
-
 ## createStateFlow
-
-- 详情：
 
 一个轻量级的状态管理器。通常方式是传入一个对象，对象属性包括`state`、`mutations`、`actions`。
 
@@ -325,27 +198,35 @@ export default store;
 import { setData } from 'strve-js';
 import store from './store.js';
 
-function getUserInfo() {
-  setData(() => {
-    store.dispatch('fetchUser').then(() => {
-      console.log(store.state.user); // { name: 'John Doe', age: 30 }
+defineComponent(({ setData }) => {
+  function getUserInfo() {
+    setData(() => {
+      store.dispatch('fetchUser').then(() => {
+        console.log(store.state.user); // { name: 'John Doe', age: 30 }
+      });
     });
-  });
-}
+  }
 
-function add() {
-  setData(() => {
-    store.commit('increment');
-  });
-}
+  function add() {
+    setData(() => {
+      store.commit('increment');
+    });
+  }
 
-function App() {
-  return (
+  return () => (
     <fragment>
       <h1 onClick={getUserInfo}>getUserInfo</h1>
       <button onClick={add}>Add</button>
       <h1>{store.state.count}</h1>
     </fragment>
   );
-}
+});
 ```
+
+## resetView
+
+与 StrveRouter 搭配使用，清空页面内容。
+
+## version
+
+直接获取 Strve 的版本号。

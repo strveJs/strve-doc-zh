@@ -98,10 +98,6 @@ export default {
             collapsible: false,
             items: [
               {
-                text: '适配',
-                link: '/other/adapt/',
-              },
-              {
                 text: 'JSX 支持',
                 link: '/other/jsx/',
               },

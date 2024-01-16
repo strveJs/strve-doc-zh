@@ -4,7 +4,13 @@
 版本号虽然取用的是 Strve 的版本号，但是内容不仅仅含有 Strve 更新的内容，还有同期的其他官方工具的更新内容。
 :::
 
-## v6.2.6 (Latest)
+## v6.6.6 (Latest)
+
+- API 与用法整体优化与更新，更加易用与高效；
+- 更新 [strve-router](https://www.npmjs.com/package/strve-router)；
+- 更新 [create-strve-app](https://www.npmjs.com/package/create-strve-app)；
+
+## v6.2.6
 
 - 利用最长递增子序列优化 Diff 算法；
 - 增加具名组件用法，引入 **"孤岛"** 特性；
