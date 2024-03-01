@@ -196,29 +196,6 @@ Strve 内部的渲染系统是基于虚拟 DOM 构建的，虚拟 DOM (Virtual D
 
 ## 内置属性
 
-### $ref
-
-`$ref` 属性可以引用一个 DOM 元素。 它用于在组件或 DOM 元素中引用其他元素。
-
-```jsx
-defineComponent(({ setData }) => {
-  let count = 1;
-  function view() {
-    setData(() => {
-      count++;
-    });
-    console.log(domInfo.h1Ref); // <h1>2</h1>
-  }
-
-  return () => (
-    <fragment>
-      <button onClick={view}>Btn</button>
-      <h1 $ref='h1Ref'>{count}</h1>
-    </fragment>
-  );
-});
-```
-
 ### $is
 
 该属性需要用在内置标签`component`上，渲染组件。

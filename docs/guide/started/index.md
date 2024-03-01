@@ -36,7 +36,7 @@ Strve 是一个易用、快速、灵活且轻量级的 JavaScript 库，用于�
       import {
         html,
         defineComponent,
-      } from 'https://cdn.jsdelivr.net/npm/strve-js@6.6.6/dist/strve.full-esm.js';
+      } from 'https://cdn.jsdelivr.net/npm/strve-js@6.7.0/dist/strve.full-esm.js';
 
       defineComponent(
         {
@@ -75,7 +75,7 @@ Strve 是一个易用、快速、灵活且轻量级的 JavaScript 库，用于�
     <title>Strve.js</title>
   </head>
   <body>
-    <script src="https://cdn.jsdelivr.net/npm/strve-js@6.6.6/dist/strve.full.prod.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/strve-js@6.7.0/dist/strve.full.prod.js"></script>
     <script>
       const { html, defineComponent } = Strve;
 

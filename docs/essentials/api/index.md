@@ -96,29 +96,6 @@ function add() {
 }
 ```
 
-## domInfo
-
-获取 DOM 信息。可以在 DOM 中的使用内置属性`$ref` 中来定义。
-
-```jsx
-defineComponent(({ setData }) => {
-  let count = 1;
-  function view() {
-    setData(() => {
-      count++;
-    });
-    console.log(domInfo.h1Ref); // <h1>2</h1>
-  }
-
-  return () => (
-    <fragment>
-      <button onClick={view}>Btn</button>
-      <h1 $ref='h1Ref'>{count}</h1>
-    </fragment>
-  );
-});
-```
-
 ## html
 
 ` html`` `是一个标签函数，标签函数的语法是直接在函数名后跟一个模板字符串。 例如，你可以直接在模板字符串中编写 HTML 标签。
@@ -137,91 +114,6 @@ defineComponent(() => {
 如果你使用的是 VSCode 编辑器，你可以去商店下载 [es6-string-html](https://marketplace.visualstudio.com/items?itemName=Tobermory.es6-string-html) 插件，
 这个插件可以使 HTML 模板字符串高亮显示。
 :::
-
-## createStateFlow
-
-一个轻量级的状态管理器。通常方式是传入一个对象，对象属性包括`state`、`mutations`、`actions`。
-
-| 属性      | 功能         |
-| --------- | ------------ |
-| state     | 存放数据     |
-| mutations | 同步更新数据 |
-| actions   | 异步操作数据 |
-
-下面我们简单举一个示例。
-
-```js
-// store.js
-import { createStateFlow } from 'strve-js';
-
-const store = new createStateFlow({
-  state: {
-    count: 0,
-    user: '',
-  },
-  // for synchronization
-  mutations: {
-    setUser: (state, user) => {
-      state.user = user;
-    },
-    increment(state) {
-      state.count++;
-    },
-    decrement(state) {
-      state.count--;
-    },
-  },
-  // for asynchronous
-  actions: {
-    fetchUser: async (context) => {
-      const user = await new Promise((resolve) => {
-        setTimeout(() => {
-          resolve({ name: 'John Doe', age: 30 });
-        }, 1000);
-      });
-      context.commit('setUser', user);
-    },
-    increment: (context) => {
-      context.commit('increment');
-    },
-    decrement(context) {
-      context.commit('decrement');
-    },
-  },
-});
-
-export default store;
-```
-
-```jsx
-// App.jsx
-import { setData } from 'strve-js';
-import store from './store.js';
-
-defineComponent(({ setData }) => {
-  function getUserInfo() {
-    setData(() => {
-      store.dispatch('fetchUser').then(() => {
-        console.log(store.state.user); // { name: 'John Doe', age: 30 }
-      });
-    });
-  }
-
-  function add() {
-    setData(() => {
-      store.commit('increment');
-    });
-  }
-
-  return () => (
-    <fragment>
-      <h1 onClick={getUserInfo}>getUserInfo</h1>
-      <button onClick={add}>Add</button>
-      <h1>{store.state.count}</h1>
-    </fragment>
-  );
-});
-```
 
 ## resetView
 
