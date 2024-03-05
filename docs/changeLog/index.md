@@ -4,10 +4,9 @@
 版本号虽然取用的是 Strve 的版本号，但是内容不仅仅含有 Strve 更新的内容，还有同期的其他官方工具的更新内容。
 :::
 
+## v6.7.1 (Latest)
 
-## v6.7.0 (Latest)
-
-- 代码重构与完善部分API；
+- 代码重构与完善部分 API；
 - 更新 [create-strve-app](https://www.npmjs.com/package/create-strve-app)；
 
 ## v6.6.6

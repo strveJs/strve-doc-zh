@@ -17,7 +17,7 @@
   import {
     html,
     defineComponent,
-  } from 'https://cdn.jsdelivr.net/npm/strve-js@6.7.0/dist/strve.full-esm.js';
+  } from 'https://cdn.jsdelivr.net/npm/strve-js@6.7.1/dist/strve.full-esm.js';
 
   defineComponent(
     {
@@ -45,7 +45,7 @@
 :::
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/strve-js@6.7.0/dist/strve.full.prod.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/strve-js@6.7.1/dist/strve.full.prod.js"></script>
 <script>
   const { html, defineComponent } = Strve;
 
