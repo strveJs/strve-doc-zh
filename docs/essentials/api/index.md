@@ -114,11 +114,3 @@ defineComponent(() => {
 如果你使用的是 VSCode 编辑器，你可以去商店下载 [es6-string-html](https://marketplace.visualstudio.com/items?itemName=Tobermory.es6-string-html) 插件，
 这个插件可以使 HTML 模板字符串高亮显示。
 :::
-
-## resetView
-
-与 StrveRouter 搭配使用，清空页面内容。
-
-## version
-
-直接获取 Strve 的版本号。

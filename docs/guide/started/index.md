@@ -1,6 +1,6 @@
 # 开始
 
-Strve 是一个易用、快速、灵活且轻量级的 JavaScript 库，用于构建用户界面。基于 `tagged template` 的 HTML 模板引擎，利用 ES6 的模板字符串来进行模板的书写，利用浏览器的原生的能力进行模板渲染。
+Strve 是一个用于构建用户界面的 JavaScript 库。
 
 - **更容易上手：** 只要你对 HTML、CSS 和 JavaScript 已经基本熟悉，就可以直接上手。
 

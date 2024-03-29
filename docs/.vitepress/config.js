@@ -65,6 +65,10 @@ export default {
                 text: '用法',
                 link: '/essentials/usage/',
               },
+              {
+                text: '案例',
+                link: '/essentials/example/',
+              },
             ],
           },
           {
