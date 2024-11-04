@@ -95,6 +95,10 @@ export default {
                 text: 'StrveReactivity',
                 link: '/tool/strveReactivity/',
               },
+              {
+                text: 'StrveRv',
+                link: '/tool/strveRv/',
+              },
             ],
           },
           {
